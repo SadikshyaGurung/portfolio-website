@@ -25,8 +25,8 @@ Route::delete('/projectdelete/{id}', [ProjectController::class, 'destroy'])->nam
 Route::get('/about', function () {
     return view('about');
 });
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/project', function () {
+    return view('project');
 });
 
 Route::get('/home', function () {

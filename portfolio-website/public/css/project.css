@@ -1,0 +1,79 @@
+body{
+    font-famil: Arial,sans-serif;
+    display: flex;
+    margin: 0;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+.sidenar{
+    width: 30%
+    background-color: #007acc;
+    color: white;
+    padding: 20px
+    box-sizing: border-box;
+}
+
+.sidebar h1{
+    margin-top: 0;
+}
+
+project-list button{
+    display: black;
+    width: 100%;
+    background: white;
+    color: #007acc;
+    border: none;
+    padding: 12px;
+    margin: 10px 0;
+    font-weight: bold;
+    cursor: pointer;
+    border-redius: 5px;
+    transition: background0.25 ease;
+}
+
+.project-list button.hover{
+    background: #e6e6e6;
+}
+
+.detail{
+    width: 70%;
+    padding: 30px;
+    box-sizing: #fff,
+}
+.detail h2{
+ margin-top: 0;
+ color:#007acc;
+}
+ 
+.detail{
+    font-size: 1.1em;
+}
+
+project-list button{
+    padding: 12px;
+    margin: 10px 0;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    /* transition: background 0.2s ease; */
+}
+
+.project-list button.hover{
+    background: #e6e6e6;
+}
+
+.detail{
+    width: 70%;
+    padding: 30px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.detail: h2{
+    margin-top: 0;
+    color: #007acc;
+}
+
+.detal{
+    font-size:1.1em;
+}
