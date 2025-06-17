@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard</title>
- 
-  <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/admin_org.css') }}" />
 </head>
 <body>
   <aside>
@@ -13,12 +12,9 @@
       <h2 class="home">Admin Panel</h2>
       <ul>
         <li id="dashboard"><a href="admin"> &#x1F3E0; Dashboard</a></li>
-        <li id="projects"> <a href="projectdash"> &#x1F4C8; Projects</a></li>
+        <li id="projects"><a href="projectdash"> &#x1F4C8; Projects</a></li>
         <li id="skills"><a href="skilldash">&#x1F4BB; Skills</a></li>
-        <li id="contacts">
-          
-          &#x1F4E7; Contacts
-        </li>
+        <li id="contacts">&#x1F4E7; Contacts</li>
       </ul>
     </div>
   </aside>
@@ -40,7 +36,6 @@
     <div class="recent-projects">
       <h2>Recent Projects</h2>
       <br>
-      <p>
       <div class="grid-header">
         <div>Title</div>
         <div>Description</div>

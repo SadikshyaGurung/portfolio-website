@@ -32,3 +32,7 @@ Route::get('/project', function () {
 Route::get('/home', function () {
     return view('home');
 });
+Route::get('/resume', function () {
+    return view('resume');
+});
+
