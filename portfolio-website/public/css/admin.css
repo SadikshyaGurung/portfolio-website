@@ -13,7 +13,7 @@
   left: 0;
   width: 220px;
   height: 100vh; 
-  background-color: #f8c4d7; 
+  background-color: #ffe1ec; 
   padding-top: 20px;
   display: flex;
   flex-direction: column;
@@ -28,8 +28,7 @@
 
 .sidebar li {
   display: flex;
-  align-items: center; 
-  background-color: #fbd1d1; 
+  align-items: center;  
   color: #333;
   font-weight: bold;
   padding: 12px 20px;
@@ -44,7 +43,7 @@
 }
 
 .sidebar li:hover {
-  background-color: #f9a9c2;
+  background-color: #fbcddb;
   cursor: pointer;
 }
 
@@ -52,7 +51,7 @@
 .home {
   padding: 20px;
   font-size: 1.8em;
-  color: #d4648d; 
+  color: #000000; 
   font-weight: 600;
   text-align: center;
 }
@@ -65,7 +64,7 @@ main {
   right: 0;
   height: 100vh;
   padding: 30px;
-  background-color: #fff0f6;
+  background-color: #ffffff;
   overflow-y: auto;
   font-size: 1.1em;
 }
@@ -79,11 +78,11 @@ main {
 }
 
 .Projectboard, .Skillboard {
-  border: solid 1px #f2c1d6; 
-  height: 250px;
-  width: 45%; 
+  border: solid 1px #ffdeeb; 
+  height: 200px;
+  width: 35%; 
   border-radius: 12px;
-  background-color: #fbe4f1; 
+  background-color: #fcedf5; 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 15px;
   text-align: center;
@@ -97,14 +96,13 @@ main {
 .Projectboard h2, .Skillboard h2 {
   font-size: 1.8em;
   color: #d4648d;
-  font-weight: 700;
   margin-bottom: 10px;
 }
 
 .Projectboard .pb, .Skillboard .sb {
-  font-size: 2em; 
-  font-weight: 800;
+  font-size: 2.2em; 
   color: #d4648d;
+  font-weight: 300em;
 }
 
 .grid-header {
