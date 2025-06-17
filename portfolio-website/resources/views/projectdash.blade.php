@@ -1,55 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <link rel="stylesheet" href="{{ asset('css/projectdash.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/projectdash.css') }}">
 </head>
 <body>
-     <aside>
+<aside>
     <div class="sidebar">
-      <h2 class="home">Admin Panel</h2>
-      <ul>
-        <li id="dashboard">
-          &#x1F3E0; Dashboard
-        </li>
-        <li id="projects">
-          &#x1F4C8; Projects
-        </li>
-        <li id="skills">
-        
-          &#x1F4BB; Skills
-        </li>
-        <li id="contacts">
-          
-          &#x1F4E7; Contacts
-        </li>
-      </ul>
+        <h2 class="home">Admin Panel</h2>
+        <ul>
+            <li id="dashboard"><a href="/admin">&#x1F3E0; Dashboard</a></li>
+            <li id="projects"><a href="{{ route('projectdash.index') }}">&#x1F4C8; Projects</a></li>
+            <li id="skills"><a href="{{ route('skilldash.index') }}">&#x1F4BB; Skills</a></li>
+            <li id="contacts">&#x1F4E7; Contacts</li>
+        </ul>
     </div>
-  </aside>
+</aside>
+
 <main>
-  <h3>Project Table<h3>
-    <br>
-    <p><a href="addform">add project</a></p>
-    <div class="grid-header">
-        <div>Title</div>
-        <div>Description</div>
-        <div>Skills</div>
-        <div>Actions</div>
-      </div>
+    <h3>Project Table</h3>
+    <p><a href="{{ route('project.create') }}">Add Project</a></p>
 
-      <div class="grid-container">
-        <div class="grid-item">id</div>
-        <div class="grid-item">name</div>
-        <div class="grid-item">skills</div>
-        <div class="grid-item">action</div>
+    @if(session('success'))
+        <p style="color: green;">{{ session('success') }}</p>
+    @endif
 
-        <div class="grid-item">Project Portfolio Website</div>
-        <div class="grid-item">A website that describes our work and skills.</div>
-        <div class="grid-item">Laravel, PHP</div>
-        <div class="grid-item"><a href="#">Edit</a></div>
-      </div>
-    </div>
-
-      
-  </main>
+    <table>
+        <thead>
+            <tr>
+                <th>Project ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Skills</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach ($projects as $project)
+            <tr>
+                <td>{{ $project->project_id }}</td>
+                <td>{{ $project->title }}</td>
+                <td>{{ $project->description }}</td>
+                <td>
+                    @php
+                        $skillIds = explode(',', $project->skills);
+                        $skillTitles = \App\Models\Skill::whereIn('id', $skillIds)->pluck('title')->toArray();
+                    @endphp
+                    {{ implode(', ', $skillTitles) }}
+                </td>
+                <td>
+                    <a href="{{ route('project.edit', $project->id) }}">Edit</a>
+                    <form action="{{ route('project.destroy', $project->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Delete this project?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+</main>
 </body>
 </html>

@@ -1,27 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\ProjectController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', fn () => view('welcome'));
+Route::get('/admin', fn () => view('admin'));
+Route::get('/addform', fn () => view('addform'));
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/admin', function () {
-    return view('admin');
-});
-Route::get('/projectdash', function () {
-    return view('projectdash');
-});
-Route::get('/addform', function () {
-    return view('addform');
-});
+// Skill routes
+Route::get('/skilldash', [SkillController::class, 'index'])->name('skilldash.index');
+Route::get('/addskill', [SkillController::class, 'add'])->name('skill.add');
+Route::post('/addskill', [SkillController::class, 'store'])->name('skill.store');
+
+// Project routes
+Route::get('/projectform', [ProjectController::class, 'create'])->name('project.create');
+Route::post('/projectform', [ProjectController::class, 'store'])->name('project.store');
+Route::get('/projectdash', [ProjectController::class, 'index'])->name('projectdash.index');
+Route::get('/projectedit/{id}', [ProjectController::class, 'edit'])->name('project.edit');
+Route::put('/projectedit/{id}', [ProjectController::class, 'update'])->name('project.update');
+Route::delete('/projectdelete/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');

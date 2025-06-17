@@ -57,32 +57,57 @@ main {
   overflow-y: auto;
   font-size: 1.1em;
 }
- table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-      }
-      th {
-        background-color: #f9bdbd;
-      }
-      a {
-        margin-right: 10px;
-        color: rgb(255, 156, 206);
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      button {
-        background: none;
-        border: none;
-        color: rgb(0, 0, 0);
-        cursor: pointer;
-        padding: 0;
-        font: inherit;
-        text-decoration: underline;
-      }
+
+
+.grid-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: #fbd1d1;
+  color: #333;
+  padding: 14px 20px;
+  border-radius: 10px 10px 0 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: white;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+.grid-item {
+  padding: 20px;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #eee;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.grid-item:last-child {
+  border-right: none;
+}
+
+.grid-container > .grid-item:nth-child(4n) {
+  border-right: none;
+}
+
+.grid-container > .grid-item:nth-child(-n+4) {
+  border-top: none;
+}
+
+.grid-item a {
+  color: #d4648d; 
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.grid-item a:hover {
+  text-decoration: underline;
+  color: #c3577d; 
+}
+
+
