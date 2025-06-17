@@ -20,3 +20,11 @@ Route::get('/projectdash', [ProjectController::class, 'index'])->name('projectda
 Route::get('/projectedit/{id}', [ProjectController::class, 'edit'])->name('project.edit');
 Route::put('/projectedit/{id}', [ProjectController::class, 'update'])->name('project.update');
 Route::delete('/projectdelete/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
+
+// About and Welcome routes
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/', function () {
+    return view('welcome');
+});
