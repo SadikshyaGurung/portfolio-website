@@ -2,12 +2,12 @@
 <html lang="en">
           <head>
           <meta charset="UTF-8">
-          <title>About Us</title>
+          <title>About</title>
           <link rel="stylesheet" href="{{asset(path:'css/aboutpage.css')}}">
           </head>
        <body>
         <div class="about">
-         <h1>About Us</h1>
+         <h1>About</h1>
 
              <div class="photo">
               <img src="https://placehold.co/400">
