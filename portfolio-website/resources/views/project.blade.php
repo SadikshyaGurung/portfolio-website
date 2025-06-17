@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>project<,</title>
-            <link rel="stylesheet" href="{{asset(path: 'css/project.css')}}">
+            <!-- <link rel="stylesheet" href="{{asset(path: 'css/project.css')}}"> -->
 </head>
 <body>
     <div class= "sidebar">
