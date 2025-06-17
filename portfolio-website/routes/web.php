@@ -19,3 +19,9 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('admin');
 });
+Route::get('/projectdash', function () {
+    return view('projectdash');
+});
+Route::get('/addform', function () {
+    return view('addform');
+});

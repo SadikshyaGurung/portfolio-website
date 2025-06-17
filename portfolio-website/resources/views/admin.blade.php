@@ -16,9 +16,10 @@
          
           &#x1F3E0; Dashboard
         </li>
-        <li id="projects">
-          
+          <li id="projectdash">
+            <a href="projectdash">
           &#x1F4C8; Projects
+          </a>
         </li>
         <li id="skills">
         
@@ -49,6 +50,7 @@
     <div class="recent-projects">
       <h2>Recent Projects</h2>
       <br>
+      <p>
       <div class="grid-header">
         <div>Title</div>
         <div>Description</div>
