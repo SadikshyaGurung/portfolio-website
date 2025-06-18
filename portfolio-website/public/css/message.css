@@ -45,3 +45,25 @@
   background-color: #fbcddb;
   cursor: pointer;
 }
+
+.home {
+  padding: 20px;
+  font-size: 1.8em;
+  color: #000000; 
+  font-weight: 600;
+  text-align: center;
+}
+
+
+main {
+  position: absolute;
+  left: 220px; 
+  top: 0;
+  right: 0;
+  height: 100vh;
+  padding: 30px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  font-size: 1.1em;
+}
+

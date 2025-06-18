@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Document</title>
-    <link rel="stylesheet" href="{{ asset('css/contactdd.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/message.css') }}">
 
 </head>
 <body>
@@ -19,7 +19,20 @@
 </aside>
 
 <main>
-    
+    <h3>Contact Table</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        
+    </table>
 
 </main>
 </body>

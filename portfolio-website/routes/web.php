@@ -43,4 +43,7 @@ Route::get('/resume', function () {
 Route::get('/contactdash', function () {
     return view('contactdash');
 });
+Route::get('/contact', function () {
+    return view('contact');
+});
 
