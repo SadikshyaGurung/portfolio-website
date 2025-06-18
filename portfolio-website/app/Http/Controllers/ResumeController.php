@@ -14,3 +14,4 @@ class ResumeController extends Controller
         return view('resume', compact('skills', 'projects'));
     }
 }
+

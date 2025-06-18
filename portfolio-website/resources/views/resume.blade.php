@@ -30,23 +30,27 @@
                 <p><strong>Address:</strong> Manamaiju, KTM</p>
             </div>
         </header>
-
-        <section>
-           <section>
+<section>
+    <section>
     <h2>Skills</h2>
     <ul>
-        @foreach($skills as $skill)
-            <li>{{ $skill->name }}</li>
-        @endforeach
+        @forelse($skills as $skill)
+            <li>{{ $skill->title }}</li>
+        @empty
+            <li>No skills found.</li>
+        @endforelse
     </ul>
 </section>
+
 
 <section>
     <h2>Projects</h2>
     <ul>
-        @foreach($projects as $project)
-            <li>{{ $project->name }}</li>
-        @endforeach
+        @forelse($projects as $project)
+            <li>{{ $project->title }}</li>
+        @empty
+            <li>No projects found.</li>
+        @endforelse
     </ul>
 </section>
 

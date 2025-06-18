@@ -7,6 +7,11 @@ body {
   padding: 0;
 }
 
+/* Smooth scroll (also in inline style, can remove from here if preferred) */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Top navigation */
 .topnav {
   display: flex;
@@ -34,6 +39,7 @@ body {
 .topnav-right a:hover {
   color: #ffd1cc; /* lighter coral on hover */
 }
+
 /* Container */
 .container {
   max-width: 1000px;
@@ -41,38 +47,52 @@ body {
   padding: 0 1rem;
 }
 
-/* Crafting section */
-.crafting-section {
-  margin-bottom: 3rem;
+/* Boxed sections with background and shadow */
+.boxed {
   background-color: #fff0f5; /* baby pink */
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(255, 111, 97, 0.2);
 }
 
-/* Crafting image */
-.crafting-image img {
+/* Crafting section general */
+.crafting-section {
+  margin-bottom: 3rem;
+}
+
+.crafting-sectionn {
+  margin-bottom: 3rem;
+}
+
+/* Welcome section: center content and image */
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  text-align: center;
+}
+
+.welcome-section .crafting-image img {
   width: 100%;
   max-width: 600px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(255, 111, 97, 0.3);
-  display: block;
-  margin: 0 auto 1rem;
 }
 
-/* Crafting text */
-.crafting-text h2 {
+/* Crafting text inside welcome */
+.welcome-section .crafting-text h2 {
   color: #ff6f61; /* coral pink */
   margin-top: 0;
 }
 
-.crafting-text p {
+.welcome-section .crafting-text p {
   color: #5c1a1a;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
-/* Crafting button */
+/* Button */
 .crafting-button {
   background-color: #ff6f61; /* coral */
   border: none;
@@ -81,12 +101,50 @@ body {
   font-weight: 700;
   border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
-.crafting-button:hover {
-  background-color: #ffd1cc; /* lighter coral */
-  color: #5c1a1a;
+
+
+/* What I Do Section */
+.section-title {
+  text-align: center;
+  color: #ffc6d3;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.what-i-do {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.do-card {
+  background-color: #ffb9d2;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 280px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  flex: 1 1 280px; /* Responsive wrapping */
+}
+
+.do-card:hover {
+  transform: translateY(-5px);
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: block;
 }
 
 /* Projects grid */
@@ -97,6 +155,7 @@ body {
   justify-content: center;
 }
 
+/* Featured project card */
 .project-featured {
   background-color: #ffd1cc; /* lighter coral background */
   border-radius: 12px;
@@ -127,7 +186,7 @@ body {
   font-size: 0.9rem;
 }
 
-/* About me section */
+/* About Me Section */
 .crafting-section > h2 {
   color: #ff6f61;
   margin-bottom: 1rem;
