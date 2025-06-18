@@ -46,15 +46,6 @@
   cursor: pointer;
 }
 
-.home {
-  padding: 20px;
-  font-size: 1.8em;
-  color: #000000; 
-  font-weight: 600;
-  text-align: center;
-}
-
-
 main {
   position: absolute;
   left: 220px; 
@@ -66,4 +57,57 @@ main {
   overflow-y: auto;
   font-size: 1.1em;
 }
+
+
+.grid-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: #fbd1d1;
+  color: #333;
+  padding: 14px 20px;
+  border-radius: 10px 10px 0 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: white;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+.grid-item {
+  padding: 20px;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #eee;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.grid-item:last-child {
+  border-right: none;
+}
+
+.grid-container > .grid-item:nth-child(4n) {
+  border-right: none;
+}
+
+.grid-container > .grid-item:nth-child(-n+4) {
+  border-top: none;
+}
+
+.grid-item a {
+  color: #d4648d; 
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.grid-item a:hover {
+  text-decoration: underline;
+  color: #c3577d; 
+}
+
 
