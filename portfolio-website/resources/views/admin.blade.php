@@ -6,12 +6,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard</title>
-<<<<<<< HEAD
 
   <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
-=======
- <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
->>>>>>> bc10d940fff07c570c94dd80b1fe18ea4a312346
 </head>
 
 <body>
@@ -29,10 +25,10 @@
         </li>
       </ul>
       <!-- Logout button at the bottom -->
-    <form action="{{ route('logout') }}" method="POST" class="logout-form">
-      @csrf
-      <button type="submit" class="logout-button">Logout</button>
-    </form>
+      <form action="{{ route('logout') }}" method="POST" class="logout-form">
+        @csrf
+        <button type="submit" class="logout-button">Logout</button>
+      </form>
     </div>
   </aside>
 
