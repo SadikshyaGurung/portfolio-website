@@ -16,6 +16,7 @@
       <h2 class="home">Admin Panel</h2>
       <ul>
         <li id="dashboard"><a href="{{ route('admin') }}"> 🏠 Dashboard</a></li>
+        <li id="home-edit"><a href="home/edit"> &#x1F4C8; Home Page Settings</a></li>
         <li id="projects"><a href="projectdash"> &#x1F4C8; Projects</a></li>
         <li id="skills"><a href="skilldash">&#x1F4BB; Skills</a></li>
 
