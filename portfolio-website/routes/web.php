@@ -29,6 +29,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
+Route::middleware('auth')->group(function () {
+
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
+    Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
 });
+
+
+
+
+// Route::get('/home', function () {
+//     return view('home');
+// });
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/register', [AuthController::class, 'registerView']);
+
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/login', [AuthController::class, 'loginView'])->name("login");
+
+Route::post('/login', [AuthController::class, 'login']);
+
+// Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect('/');
+})->name('logout');
