@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Message;  // Make sure to import the model
 
 class MessageController extends Controller
 {
-    public function index(){
-        $messages = message::all();
-    return view('contactdash', ['messages' => $messages]);
+    // Display all messages in the dashboard
+    public function index()
+    {
+        $messages = Message::all();
+        return view('contactdash', compact('messages'));
     }
+
     // Store the message in the database
     public function store(Request $request)
     {
@@ -27,12 +31,4 @@ class MessageController extends Controller
 
         return redirect()->route('contact')->with('success', 'Your message has been sent!');
     }
-
-    // Display all messages in the dashboard
-    public function index()
-    {
-        $messages = Message::all();
-        return view('contactdash', compact('messages'));
-    }
 }
-

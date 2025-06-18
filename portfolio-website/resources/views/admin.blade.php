@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+ <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 <body>
   <aside>
@@ -14,6 +14,11 @@
         <li id="skills"><a href="skilldash">&#x1F4BB; Skills</a></li>
         <li id="contacts"><a href="contactdash">&#x1F4E7; Contacts</a></li>
       </ul>
+      <!-- Logout button at the bottom -->
+    <form action="{{ route('logout') }}" method="POST" class="logout-form">
+      @csrf
+      <button type="submit" class="logout-button">Logout</button>
+    </form>
     </div>
   </aside>
   

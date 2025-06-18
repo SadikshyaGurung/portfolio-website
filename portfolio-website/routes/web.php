@@ -5,27 +5,39 @@ use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
-Route::post('/store-message', [MessageController::class, 'store'])->name('storeMessage');
-Route::get('/contactdash', [MessageController::class, 'index'])->name('contactdash');
-
-
-
+// Admin dashboard
 Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
 
-//message routes
-Route::get('/skilldash', [SkillController::class, 'index'])->name('skilldash.index');
-Route::get('/addskill', [SkillController::class, 'add'])->name('skill.add');
-Route::post('/addskill', [SkillController::class, 'store'])->name('skill.store');
+// Authenticated routes
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
+    Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
+});
 
+// Authentication routes
+Route::get('/register', [AuthController::class, 'registerView']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'loginView'])->name('login.View');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
 
-Route::get('/', fn () => view('welcome'));
-Route::get('/addform', fn () => view('addform'));
+// Public routes
+Route::get('/', fn() => view('welcome'));
+Route::get('/addform', fn() => view('addform'));
+Route::get('/contact', fn() => view('contact'))->name('contact');
+Route::post('/store-message', [MessageController::class, 'store'])->name('storeMessage');
+
+// Contact dashboard route using controller
+Route::get('/contactdash', [MessageController::class, 'index'])->name('contactdash');
 
 // Skill routes
 Route::get('/skilldash', [SkillController::class, 'index'])->name('skilldash.index');
@@ -40,24 +52,8 @@ Route::get('/projectedit/{id}', [ProjectController::class, 'edit'])->name('proje
 Route::put('/projectedit/{id}', [ProjectController::class, 'update'])->name('project.update');
 Route::delete('/projectdelete/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
 
-// About and Welcome routes
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/project', function () {
-    return view('project');
-});
-
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('/resume', function () {
-    return view('resume');
-});
-Route::get('/contactdash', function () {
-    return view('contactdash');
-});
-Route::get('/contact', function () {
-    return view('contact');
-});
-
+// Static pages
+Route::get('/about', fn() => view('about'));
+Route::get('/project', fn() => view('project'));
+Route::get('/home', fn() => view('home'));
+Route::get('/resume', fn() => view('resume'));
