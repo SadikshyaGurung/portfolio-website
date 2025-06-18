@@ -32,32 +32,24 @@
         </header>
 
         <section>
-            <h2>Skills</h2>
-            <ul>
-                <li>C, C++</li>
-                <li>Python</li>
-                <li>PHP, Laravel</li>
-                <li>Adobe Illusrator, Photoshop</li>
-                <li>CCC,HTML</li>
-            </ul>
-        </section>
+           <section>
+    <h2>Skills</h2>
+    <ul>
+        @foreach($skills as $skill)
+            <li>{{ $skill->name }}</li>
+        @endforeach
+    </ul>
+</section>
 
-        <section>
-            <h2>Hobbies</h2>
-            <ul>
-                <li>Painting</li>
-                <li>Sketching</li>
-                <li>Traveling</li>
-            </ul>
-        </section>
+<section>
+    <h2>Projects</h2>
+    <ul>
+        @foreach($projects as $project)
+            <li>{{ $project->name }}</li>
+        @endforeach
+    </ul>
+</section>
 
-        <section>
-            <h2>Projects</h2>
-            <ul>
-                <li>Todo App</li>
-                <li>Portfolio Website</li>
-            </ul>
-        </section>
     </div>
 </body>
 </html>

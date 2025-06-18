@@ -7,6 +7,14 @@ use App\Models\Skill;
 
 class SkillController extends Controller
 {
+    public function resume()
+{
+    $skills = Skill::all();
+    $projects = Project::all(); // Make sure you import Project model
+
+    return view('resume', compact('skills', 'projects'));
+}
+
     
    public function index()
 {

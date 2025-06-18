@@ -1,190 +1,139 @@
+/* General resets and body */
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f7f8fa;
-    margin: 0;
-    padding: 0;
-    color: #222;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff0f5; /* baby pink background */
+  color: #5c1a1a; /* dark coral text */
+  margin: 0;
+  padding: 0;
 }
 
+/* Top navigation */
 .topnav {
-    background: #fff;
-    color: #232946;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-    height: 70px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ff6f61; /* coral pink */
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.topnav-left h1 {
-    color: #232946;
+.topnav-left h1.home-welcome {
+  color: #fff0f5; /* baby pink text on coral background */
+  margin: 0;
+  font-weight: 700;
 }
 
 .topnav-right a {
-    color: #232946;
-    text-decoration: none;
-    margin-left: 30px;
-    font-weight: 500;
-    transition: background 0.2s, color 0.2s;
-    padding: 8px 16px;
-    border-radius: 6px;
-    display: inline-block;
+  color: #fff0f5; /* baby pink links */
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 .topnav-right a:hover {
-    background: #f0f0f0;
-    color: #232946;
+  color: #ffd1cc; /* lighter coral on hover */
 }
-
+/* Container */
 .container {
-    max-width: 1100px;
-    margin: 40px auto;
-
-    border-radius: 18px;
-
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
+/* Crafting section */
 .crafting-section {
-    margin-bottom: 50px;
+  margin-bottom: 3rem;
+  background-color: #fff0f5; /* baby pink */
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(255, 111, 97, 0.2);
 }
 
-.crafting-section {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
+/* Crafting image */
+.crafting-image img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(255, 111, 97, 0.3);
+  display: block;
+  margin: 0 auto 1rem;
 }
 
-.crafting-text {
-    flex: 1;
-}
-
+/* Crafting text */
 .crafting-text h2 {
-    font-size: 2.2rem;
-    color: #232946;
-    margin-bottom: 18px;
+  color: #ff6f61; /* coral pink */
+  margin-top: 0;
 }
 
 .crafting-text p {
-    font-size: 1.15rem;
-    color: #555;
-    margin-bottom: 24px;
+  color: #5c1a1a;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
 
+/* Crafting button */
 .crafting-button {
-    background: #eebbc3;
-    color: #232946;
-    border: none;
-    padding: 12px 32px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
+  background-color: #ff6f61; /* coral */
+  border: none;
+  padding: 0.7rem 1.4rem;
+  color: #fff0f5; /* baby pink */
+  font-weight: 700;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .crafting-button:hover {
-    background: #ffd6e0;
+  background-color: #ffd1cc; /* lighter coral */
+  color: #5c1a1a;
 }
 
+/* Projects grid */
 .projects {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-    margin-top: 24px;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .project-featured {
-    border-radius: 12px;
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-    transition: transform 0.18s;
+  background-color: #ffd1cc; /* lighter coral background */
+  border-radius: 12px;
+  padding: 1rem;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(255, 111, 97, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .project-featured:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 6px 24px rgba(35, 41, 70, 0.12);
+  transform: translateY(-5px);
 }
 
 .project-featured img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 14px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
 }
 
 .project-featured h3 {
-    color: #232946;
-    margin: 10px 0 8px 0;
-    font-size: 1.2rem;
+  color: #ff6f61; /* coral */
+  margin-bottom: 0.5rem;
 }
 
 .project-featured p {
-    color: #555;
-    font-size: 1rem;
+  color: #5c1a1a;
+  font-size: 0.9rem;
 }
 
-@media (max-width: 900px) {
-    .container {
-        padding: 10px;
-    }
-
-    .crafting-section {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .crafting-image img {
-        margin: 0 0 24px 0;
-    }
-
-    .projects {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-/* ...existing code... */
-
-.crafting-image img {
-    width: 400px;
-    height:400px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-right: 40px;
-    display: block;
+/* About me section */
+.crafting-section > h2 {
+  color: #ff6f61;
+  margin-bottom: 1rem;
 }
 
-/* Featured projects in 3 columns */
-.projects {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin-top: 24px;
-}
-
-/* ...existing code... */
-
-@media (max-width: 900px) {
-    .container {
-        padding: 10px;
-    }
-
-    .crafting-section {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .crafting-image img {
-        margin: 0 0 24px 0;
-        width: 100%;
-        height: 180px;
-    }
-
-    .projects {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+.crafting-section > div p {
+  color: #5c1a1a;
+  line-height: 1.5;
 }

@@ -5,7 +5,7 @@
 </head>
 <body>
     <h2>Add New Project</h2>
-    <form action="{{ route('project.store') }}" method="POST">
+    <form action="{{ route('project.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label>Project ID:</label><br>
         <input type="text" name="project_id"><br><br>
@@ -21,8 +21,18 @@
             <input type="checkbox" name="skills[]" value="{{ $skill->id }}"> {{ $skill->title }}<br>
         @endforeach
         <br>
+        
+        <label for="image">Choose an img:</label>
+        <input type="file" id="image" name="image" accept="image/*">
+        </div>
 
         <button type="submit">Save</button>
+        @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
     </form>
 </body>
 </html>

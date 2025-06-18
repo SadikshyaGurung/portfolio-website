@@ -20,25 +20,31 @@ class ProjectController extends Controller
         return view('projectform', compact('skills'));
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'project_id' => 'required|unique:projects',
-            'title' => 'required',
-            'description' => 'required',
-            'skills' => 'required|array'
-        ]);
+ public function store(Request $request)
+{
+    // Validate incoming request data (optional but recommended)
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        Project::create([
-            'project_id' => $request->project_id,
-            'title' => $request->title,
-            'description' => $request->description,
-            'skills' => implode(',', $request->skills),
-        ]);
+    // Store the uploaded image in storage/app/public/images and get the path
+    $path = $request->file('image')->store('images', 'public');
 
-        return redirect()->route('projectdash.index')->with('success', 'Project created!');
-    }
+    // Create and save the project
+   $project = new Project();
 
+$project->project_id = $request->input('project_id'); // <-- assign this
+$project->title = $request->title;
+$project->description = $request->description;
+$project->image = $path;
+
+$project->save();
+
+    // Redirect back or to some page with success message
+    return redirect()->route('project')->with('success', 'Project created successfully!');
+}
     public function edit($id)
     {
         $project = Project::findOrFail($id);
@@ -50,11 +56,13 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
 
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'skills' => 'required|array'
-        ]);
+       $request->validate([
+    'project_id' => 'required|integer|unique:projects,project_id',
+    'title' => 'required|string|max:255',
+    'description' => 'required|string',
+    'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+]);
+
 
         $project->update([
             'title' => $request->title,
