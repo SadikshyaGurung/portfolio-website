@@ -13,6 +13,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminContactController;
 use App\Http\Controllers\ResumeController;
 use App\Models\Project;
+use App\Http\Controllers\PersonalDetailController;
+
+
+
 
 // ---------------------------
 // Public Routes
@@ -22,7 +26,8 @@ use App\Models\Project;
 Route::get('/', fn() => view('welcome'));
 
 // About
-Route::get('/about', fn() => view('about'));
+Route::get('/about', [App\Http\Controllers\AboutController::class, 'index']);
+
 
 // Contact Form
 Route::get('/contact', [MessageController::class, 'showForm'])->name('contact');
@@ -64,16 +69,24 @@ Route::middleware('auth')->group(function () {
     // Admin dashboard
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
 
+
+    Route::get('/personal-details', [PersonalDetailController::class, 'edit'])->name('personal');
+    Route::post('/personal-details', [PersonalDetailController::class, 'update'])->name('personal.update');
+
     // Home Page Edit
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
     Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
 
-    // Admin Contact Dashboard (was 'contactdash' before - moved here)
+    // Admin Contact Dashboard route
     Route::get('/contactdash', [AdminContactController::class, 'index'])->name('contactdash');
+
+    // Edit message routes
     Route::get('/admin/message/{id}/edit', [AdminContactController::class, 'edit'])->name('message.edit');
     Route::put('/admin/message/{id}', [AdminContactController::class, 'update'])->name('message.update');
     Route::delete('/admin/message/{id}', [AdminContactController::class, 'destroy'])->name('message.destroy');
+
+    // Other admin routes...
 
     // Skills Management
     Route::get('/skilldash', [SkillController::class, 'index'])->name('skilldash.index');

@@ -24,11 +24,11 @@
             <div class="photo">
                 <img src="https://placehold.co/150x150" alt="Profile Photo">
             </div>
-            <div class="details">
-                <h1>Sadikshya Gurung</h1>
-                <p><strong>D.O.B:</strong> April 7, 2002</p>
-                <p><strong>Address:</strong> Manamaiju, KTM</p>
-            </div>
+    <div class="details">
+        <h1>{{ $personalDetail->name ?? 'No Name Provided' }}</h1>
+        <p><strong>D.O.B:</strong> {{ \Carbon\Carbon::parse($personalDetail->dob)->format('F j, Y') ?? 'Not Provided' }}</p>
+        <p><strong>Address:</strong> {{ $personalDetail->address ?? 'Not Provided' }}</p>
+    </div>
         </header>
 <section>
     <section>

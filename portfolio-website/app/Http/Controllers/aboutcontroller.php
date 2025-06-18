@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user;
-use App\Http\Request\userrequest;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\PersonalDetail;
 
-class aboutcontroller extends Controller
+class AboutController extends Controller
 {
-    //
+    public function index()
+    {
+        $user = Auth::user();
+        $personalDetail = PersonalDetail::where('user_id', $user->id)->first();
+
+        return view('about', compact('personalDetail'));
+    }
 }
+

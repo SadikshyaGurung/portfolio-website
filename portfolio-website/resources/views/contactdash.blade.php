@@ -10,16 +10,16 @@
             <h2 class="home">Admin Panel</h2>
             <ul>
                 <li id="dashboard"><a href="{{ route('admin') }}">🏠 Dashboard</a></li>
-                <li id="projects"><a href="projectdash">📈 Projects</a></li>
-                <li id="skills"><a href="skilldash">💻 Skills</a></li>
-                <li id="contacts"><a href="contactdash">📧 Contacts</a></li>
+                <li id="projects"><a href="{{ route('projectdash.index') }}">📈 Projects</a></li>
+                <li id="skills"><a href="{{ route('skilldash.index') }}">💻 Skills</a></li>
+                <li id="contacts"><a href="{{ route('contactdash') }}">📧 Contacts</a></li>
             </ul>
-            
-      <!-- Logout button at the bottom -->
-    <form action="{{ route('logout') }}" method="POST" class="logout-form">
-      @csrf
-      <button type="submit" class="logout-button">Logout</button>
-    </form>
+
+            <!-- Logout button -->
+            <form action="{{ route('logout') }}" method="POST" class="logout-form">
+                @csrf
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
         </div>
     </aside>
 

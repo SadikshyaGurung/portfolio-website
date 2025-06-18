@@ -13,6 +13,9 @@
         <li id="projects"><a href="projectdash"> &#x1F4C8; Projects</a></li>
         <li id="skills"><a href="skilldash">&#x1F4BB; Skills</a></li>
         <li id="contacts"><a href="contactdash">&#x1F4E7; Contacts</a></li>
+        <li><a href="{{ route('personal') }}">👤 Personal Details</a></li>
+
+
       </ul>
       <!-- Logout button at the bottom -->
     <form action="{{ route('logout') }}" method="POST" class="logout-form">
