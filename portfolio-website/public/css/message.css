@@ -5,6 +5,7 @@
   font-family: 'Arial', sans-serif;
 }
 
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -83,10 +84,10 @@ main {
 
 .grid-header {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   background-color: #fbd1d1;
   color: #333;
-  padding: 14px 20px;
+  padding: 8px 15px;
   border-radius: 10px 10px 0 0;
   font-weight: bold;
   text-align: center;
@@ -94,14 +95,14 @@ main {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   background-color: white;
   border: 1px solid #ddd;
   border-top: none;
 }
 
 .grid-item {
-  padding: 20px;
+  padding: 10px;
   border-top: 1px solid #eee;
   border-right: 1px solid #eee;
   font-size: 14px;
@@ -113,11 +114,11 @@ main {
   border-right: none;
 }
 
-.grid-container > .grid-item:nth-child(4n) {
+.grid-container > .grid-item:nth-child(5n) {
   border-right: none;
 }
 
-.grid-container > .grid-item:nth-child(-n+4) {
+.grid-container > .grid-item:nth-child(-n+5) {
   border-top: none;
 }
 

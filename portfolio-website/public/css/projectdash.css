@@ -5,6 +5,7 @@
   font-family: 'Arial', sans-serif;
 }
 
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -49,7 +50,7 @@
 
 .sidebar li {
   display: flex;
-  align-items: center;
+  align-items: center;  
   color: #333;
   font-weight: bold;
   padding: 12px 20px;
@@ -58,23 +59,21 @@
   transition: background-color 0.3s ease;
 }
 
+.sidebar li i {
+  margin-right: 15px; 
+  font-size: 18px;
+}
+
 .sidebar li:hover {
   background-color: #fbcddb;
   cursor: pointer;
 }
 
-.sidebar li i {
-  margin-right: 15px;
-  font-size: 18px;
-}
-
-.logout-form {
-  padding: 20px;
-}
-
 main {
   position: absolute;
-  left: 220px;
+  left: 220px; 
+  top: 0;
+  right: 0;
   height: 100vh;
   padding: 30px;
   background-color: #ffffff;
@@ -82,9 +81,10 @@ main {
   font-size: 1.1em;
 }
 
+
 .grid-header {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Adjusted for 5 columns */
+  grid-template-columns: repeat(5, 1fr);
   background-color: #fbd1d1;
   color: #333;
   padding: 14px 20px;
@@ -92,38 +92,45 @@ main {
   font-weight: bold;
   text-align: center;
 }
+
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Adjusted for 5 columns */
-  background-color: #ffffff;
-  grid-gap: 1px; /* Creates spacing between grid items */
-  border: 1px solid #ddd; /* Optional: adds a border around the entire grid */
+  grid-template-columns: repeat(5, 1fr);
+  background-color: white;
+  border: 1px solid #ddd;
+  border-top: none;
 }
 
 .grid-item {
   padding: 20px;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #eee;
   font-size: 14px;
   color: #555;
   text-align: center;
-  background-color: #ffffff;
-  border: 1px solid #ddd; /* Optional: adds a border to each grid item */
 }
 
-.grid-item:nth-child(5n) {
-  border-right: none; /* no right border on last column */
+.grid-item:last-child {
+  border-right: none;
 }
 
-.grid-item:nth-child(-n+5) {
-  border-top: none; /* no top border on first row */
+.grid-container > .grid-item:nth-child(5n) {
+  border-right: none;
+}
+
+.grid-container > .grid-item:nth-child(-n+5) {
+  border-top: none;
 }
 
 .grid-item a {
-  color: #d4648d;
+  color: #d4648d; 
   text-decoration: none;
   font-weight: bold;
 }
 
 .grid-item a:hover {
   text-decoration: underline;
-  color: #c3577d;
+  color: #c3577d; 
 }
+
+

@@ -8,6 +8,20 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdminContactController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/contacts', [AdminContactController::class, 'index'])->name('contactdash');
+    Route::get('/admin/message/{id}/edit', [AdminContactController::class, 'edit'])->name('message.edit');
+    Route::put('/admin/message/{id}', [AdminContactController::class, 'update'])->name('message.update');
+    Route::delete('/admin/message/{id}', [AdminContactController::class, 'destroy'])->name('message.destroy');
+});
+// Show the contact form
+Route::get('/contact', [MessageController::class, 'showForm'])->name('contact');
+
+// Handle the form submission
+Route::post('/contact', [MessageController::class, 'store'])->name('contact.submit');
+
 
 // Admin dashboard
 Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
@@ -34,7 +48,7 @@ Route::post('/logout', function () {
 Route::get('/', fn() => view('welcome'));
 Route::get('/addform', fn() => view('addform'));
 Route::get('/contact', fn() => view('contact'))->name('contact');
-Route::post('/store-message', [MessageController::class, 'store'])->name('storeMessage');
+Route::post('/store-message', [MessageController::class, 'store'])->name('store');
 
 // Contact dashboard route using controller
 Route::get('/contactdash', [MessageController::class, 'index'])->name('contactdash');
@@ -57,3 +71,6 @@ Route::get('/about', fn() => view('about'));
 Route::get('/project', fn() => view('project'));
 Route::get('/home', fn() => view('home'));
 Route::get('/resume', fn() => view('resume'));
+
+// Handle contact form submission
+Route::post('/contact/submit', [MessageController::class, 'submit'])->name('contact.submit');
