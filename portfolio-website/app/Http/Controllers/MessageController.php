@@ -19,7 +19,6 @@ class MessageController extends Controller
             'description' => 'required|string|max:500',
         ]);
 
-        // Save the message to the database
         $message = new Message();
         $message->name = $validated['name'];
         $message->email = $validated['email'];
