@@ -11,11 +11,12 @@
   top: 0;
   left: 0;
   width: 220px;
-  height: 100vh; 
-  background-color: #ffe1ec; 
+  height: 100vh;
+  background-color: #ffe1ec;
   padding-top: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* ensure content is spaced top-to-bottom */
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -23,6 +24,28 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
+  flex-grow: 0; /* prevent it from pushing the logout */
+}
+
+.logout-form {
+  margin-top: auto;
+  padding: 20px;
+}
+
+.logout-button {
+  width: 100%;
+  background-color: #ffffff;
+  color: rgb(255, 175, 175);
+  border: none;
+  padding: 10px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logout-button:hover {
+  background-color: #c3577d;
+  color: white;
 }
 
 .sidebar li {
@@ -46,15 +69,6 @@
   cursor: pointer;
 }
 
-.home {
-  padding: 20px;
-  font-size: 1.8em;
-  color: #000000; 
-  font-weight: 600;
-  text-align: center;
-}
-
-
 main {
   position: absolute;
   left: 220px; 
@@ -66,4 +80,57 @@ main {
   overflow-y: auto;
   font-size: 1.1em;
 }
+
+
+.grid-header {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: #fbd1d1;
+  color: #333;
+  padding: 8px 15px;
+  border-radius: 10px 10px 0 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: white;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+.grid-item {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #eee;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.grid-item:last-child {
+  border-right: none;
+}
+
+.grid-container > .grid-item:nth-child(5n) {
+  border-right: none;
+}
+
+.grid-container > .grid-item:nth-child(-n+5) {
+  border-top: none;
+}
+
+.grid-item a {
+  color: #d4648d; 
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.grid-item a:hover {
+  text-decoration: underline;
+  color: #c3577d; 
+}
+
 

@@ -6,6 +6,20 @@
           <link rel="stylesheet" href="{{asset(path:'css/aboutpage.css')}}">
           </head>
        <body>
+     <nav class="topnav">
+    <div class="topnav-left">
+        <h1>My Portfolio</h1>
+    </div>
+    <div class="topnav-right">
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/project">Projects</a>
+        <a href="/contact">Contact</a>
+        <a href="/resume">Resume</a>
+    </div>
+</nav>
+<main>
+
         <div class="about">
          <h1>About</h1>
 
@@ -22,7 +36,7 @@
                  <h3>9821438725</h3>
                  </div>
 </div>
-            
+            <div>
              <p>Hi! I’m Akschit, an enthusiastic beginner exploring the world of coding. 
              I recently started learning web development and love how creative it can be.
              Right now, I’m focusing on HTML, CSS, and Laravel to build real web projects.
@@ -35,6 +49,6 @@
              I’m excited to grow as a developer and connect with others on the same journey!</p>
 
               </div> 
-   
-       </body>
+   </main>
+</body>
 </html>

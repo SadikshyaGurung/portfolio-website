@@ -13,6 +13,12 @@
         <li id="skills"><a href="skilldash">&#x1F4BB; Skills</a></li>
         <li id="contacts"><a href="contactdash">&#x1F4E7; Contacts</a></li>
       </ul>
+      
+      <!-- Logout button at the bottom -->
+    <form action="{{ route('logout') }}" method="POST" class="logout-form">
+      @csrf
+      <button type="submit" class="logout-button">Logout</button>
+    </form>
     </div>
   </aside>
 <main>

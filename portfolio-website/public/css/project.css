@@ -1,79 +1,117 @@
-body{
-    font-famil: Arial,sans-serif;
-    display: flex;
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff1f5;
     margin: 0;
-    height: 100vh;
-    background-color: #f4f4f4;
-}
-.sidenar{
-    width: 30%
-    background-color: #007acc;
-    color: white;
-    padding: 20px
-    box-sizing: border-box;
+    padding: 50px 10%; /* you can keep or remove this padding if you prefer */
+    text-align: center;
 }
 
-.sidebar h1{
-    margin-top: 0;
-}
-
-project-list button{
-    display: black;
+nav.topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffc7c7;
+    padding: 30px 40px;
+    box-shadow: 0 2px 5px rgba(255, 207, 207, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 999;
+}
+
+/* Logo / title section */
+.topnav-left h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+/* Nav links */
+.topnav-right {
+    display: flex;
+    gap: 15px;
+    margin-right: 50px;
+}
+
+.topnav-right a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px 10px; /* ensures clickable space */
+    transition: background-color 0.3s ease;
+}
+
+.topnav-right a:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+}
+
+/* Add margin-top to main so it's below navbar */
+.main {
+    width: 100%;
+    margin-top: 80px; /* adjust this value if your navbar height changes */
+}
+
+h1 {
+    color: #e75480;
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.box {
     background: white;
-    color: #007acc;
-    border: none;
-    padding: 12px;
-    margin: 10px 0;
+    border: 2px solid #e75480;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+}
+
+.img-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: #fcb6cd;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: bold;
-    cursor: pointer;
-    border-redius: 5px;
-    transition: background0.25 ease;
+    font-size: 14px;
+    flex-shrink: 0;
 }
 
-.project-list button.hover{
-    background: #e6e6e6;
+.text-content {
+    flex: 1;
 }
 
-.detail{
-    width: 70%;
-    padding: 30px;
-    box-sizing: #fff,
-}
-.detail h2{
- margin-top: 0;
- color:#007acc;
-}
- 
-.detail{
-    font-size: 1.1em;
-}
-
-project-list button{
-    padding: 12px;
-    margin: 10px 0;
+.project-name {
     font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    /* transition: background 0.2s ease; */
+    color: #e75480;
+    margin-bottom: 5px;
+    font-size: 16px;
 }
 
-.project-list button.hover{
-    background: #e6e6e6;
-}
-
-.detail{
-    width: 70%;
-    padding: 30px;
-    box-sizing: border-box;
-    background: #fff;
-}
-
-.detail: h2{
-    margin-top: 0;
-    color: #007acc;
-}
-
-.detal{
-    font-size:1.1em;
+.description {
+    font-size: 14px;
+    color: #333;
 }

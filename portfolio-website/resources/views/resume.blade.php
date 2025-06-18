@@ -6,6 +6,19 @@
     <link rel="stylesheet" href="{{ asset('css/resume.css') }}">
 </head>
 <body>
+    
+<nav class="topnav">
+    <div class="topnav-left">
+        <h1 class="home-welcome">My Portfolio</h1>
+    </div>
+    <div class="topnav-right">
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/projects">Projects</a>
+        <a href="/contact">Contact</a>
+        <a href="/resume">Resume</a>
+    </div>
+</nav>
     <div class="container">
         <header>
             <div class="photo">
@@ -17,34 +30,30 @@
                 <p><strong>Address:</strong> Manamaiju, KTM</p>
             </div>
         </header>
+<section>
+    <section>
+    <h2>Skills</h2>
+    <ul>
+        @forelse($skills as $skill)
+            <li>{{ $skill->title }}</li>
+        @empty
+            <li>No skills found.</li>
+        @endforelse
+    </ul>
+</section>
 
-        <section>
-            <h2>Skills</h2>
-            <ul>
-                <li>C, C++</li>
-                <li>Python</li>
-                <li>PHP, Laravel</li>
-                <li>Adobe Illusrator, Photoshop</li>
-                <li>CCC,HTML</li>
-            </ul>
-        </section>
 
-        <section>
-            <h2>Hobbies</h2>
-            <ul>
-                <li>Painting</li>
-                <li>Sketching</li>
-                <li>Traveling</li>
-            </ul>
-        </section>
+<section>
+    <h2>Projects</h2>
+    <ul>
+        @forelse($projects as $project)
+            <li>{{ $project->title }}</li>
+        @empty
+            <li>No projects found.</li>
+        @endforelse
+    </ul>
+</section>
 
-        <section>
-            <h2>Projects</h2>
-            <ul>
-                <li>Todo App</li>
-                <li>Portfolio Website</li>
-            </ul>
-        </section>
     </div>
 </body>
 </html>

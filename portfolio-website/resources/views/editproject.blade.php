@@ -25,6 +25,10 @@
             {{ $skill->title }}<br>
         @endforeach
         <br>
+        
+        <label for="image">Choose an img:</label>
+        <input type="file" id="image" name="image" accept="image/*">
+        
 
         <button type="submit">Update</button>
     </form>

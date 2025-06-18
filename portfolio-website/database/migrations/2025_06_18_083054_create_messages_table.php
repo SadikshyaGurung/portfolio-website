@@ -10,18 +10,17 @@ return new class extends Migration
      * Run the migrations.
      *
      * @return void
-     */
-    public function up()
-    {
-       Schema::create('skills', function (Blueprint $table) {
-    $table->id();
-    $table->string('title');
-    $table->text('description');
-    $table->string('skills');
-    $table->timestamps();
-});
+     */public function up()
+{
+    Schema::create('messages', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->string('email');
+        $table->text('description');
+        $table->timestamps();
+    });
+}
 
-    }
 
     /**
      * Reverse the migrations.
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skills');
+        Schema::dropIfExists('messages');
     }
 };

@@ -33,7 +33,7 @@ class AuthController extends Controller
         $validated = $request->validated();
         if (Auth::attempt($validated)) {
             $request->session()->regenerate();
-            return redirect("/");
+            return redirect("/admin");
         }
         return back()->withErrors([
             "email" => "Invalid credentials"
