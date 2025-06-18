@@ -80,6 +80,7 @@ Route::get('/contactdash', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+Route::post('/admin/upload-image', [AdminController::class, 'uploadImage'])->name('image.upload');
 
 
 // Register

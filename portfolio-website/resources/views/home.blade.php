@@ -51,14 +51,12 @@
             <section class="crafting-section">
                 <h2>Featured Projects</h2>
                 <div class="projects">
-                    @foreach($settings->featured_projects as $project)
-                        <div class="project-featured">
-                            <img src="{{ $project['image_url'] }}" alt="{{ $project['title'] }}"></br>
-                            <h3>{{ $project['title'] }}</h3></br>
-                            <p>{{ $project['description'] }}</p>
-
+                    @foreach($settings->featured_projects ?? [] as $project)
+                        <div class="project-card">
+                            <img src="{{ asset($project['image_url']) }}" alt="{{ $project['title'] }}" class="project-image">
+                            <h3 class="project-title">{{ $project['title'] }}</h3>
+                            <p class="project-description">{{ $project['description'] }}</p>
                         </div>
-
                     @endforeach
                 </div>
             </section>

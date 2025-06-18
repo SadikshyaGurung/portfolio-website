@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ asset('css/home-edit.css') }}">
-@extends('partials.layout')
+@extends('partials.edit-layout')
 
 @section('title', 'Edit Home')
 
@@ -36,9 +36,14 @@
                                 <input type="text" name="projects[{{ $i }}][title]" value="{{ $proj['title'] }}"
                                     placeholder="Title" />
                             </td>
+
                             <td>
-                                <input type="text" name="projects[{{ $i }}][image_url]" value="{{ $proj['image_url'] }}"
-                                    placeholder="Image URL" />
+                                <input type="text" name="projects[{{ $i }}][image_url]" id="image_url_{{ $i }}"
+                                    value="{{ $proj['image_url'] }}" placeholder="Image URL" />
+                                <input type="file" onchange="uploadImage(this, 'image_url_{{ $i }}')"
+                                    name="projects[{{ $i }}][image_url]" />
+                                <input type="hidden" name="" projects[{{ $i }}][image_url]"
+                                    value="{{ $project['image_url'] ?? '' }}">
                             </td>
                             <td>
                                 <textarea name="projects[{{ $i }}][description]"
@@ -68,12 +73,40 @@
             const newRow = document.createElement('tr');
             newRow.classList.add('project-row');
             newRow.innerHTML = `
-                                    <td><input type="text" name="projects[${idx}][title]" placeholder="Title" /></td>
-                                    <td><input type="text" name="projects[${idx}][image_url]" placeholder="Image URL" /></td>
-                                    <td><textarea name="projects[${idx}][description]" placeholder="Description"></textarea></td>
-                                    <td><button type="button" onclick="this.closest('tr').remove()" class="remove-btn">Remove</button></td>
-                                `;
+                                                                                                                                                                                                                            <td><input type="text" name="projects[${idx}][title]" placeholder="Title" /></td>
+                                                                                                                                                                                                                            <td><input type="text" name="projects[${idx}][image_url]" id="image_url_${idx}" placeholder="Image URL" /><input type="file" onchange="uploadImage(this, 'image_url_${idx}')" /></td>
+                                                                                                                                                                                                                            <td><textarea name="projects[${idx}][description]" placeholder="Description"></textarea></td>
+                                                                                                                                                                                                                            <td><button type="button" onclick="this.closest('tr').remove()" class="remove-btn">Remove</button></td>
+                                                                                                                                                                                                                        `;
             tbody.appendChild(newRow);
+        }
+
+        function uploadImage(input, targetInputId) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('image', file);
+
+            fetch('{{ route('image.upload') }}', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.url) {
+                        document.getElementById(targetInputId).value = data.url;
+                    } else {
+                        alert('Upload failed.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Upload error:', error);
+                    alert('Image upload failed.');
+                });
         }
     </script>
 @endsection
