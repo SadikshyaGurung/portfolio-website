@@ -8,5 +8,10 @@ use Illuminate\Http\Request;
 
 class aboutcontroller extends Controller
 {
-    //
+    //Show the About Us page
+    public function index()
+    {
+        // You can pass data to the view here if needed
+        return view('about');
+    }
 }
