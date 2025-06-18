@@ -8,13 +8,10 @@
     <div class="sidebar">
       <h2 class="home">Admin Panel</h2>
       <ul>
-       <li id="dashboard"><a href="admin"> &#x1F3E0; Dashboard</a></li>
-        <li id="projects"> <a href="projectdash"> &#x1F4C8; Projects</a></li>
+       <li id="dashboard"><a href="{{ route('admin') }}"> 🏠 Dashboard</a></li>
+        <li id="projects"><a href="projectdash"> &#x1F4C8; Projects</a></li>
         <li id="skills"><a href="skilldash">&#x1F4BB; Skills</a></li>
-        <li id="contacts">
-          
-          &#x1F4E7; Contacts
-        </li>
+        <li id="contacts"><a href="contactdash">&#x1F4E7; Contacts</a></li>
       </ul>
     </div>
   </aside>

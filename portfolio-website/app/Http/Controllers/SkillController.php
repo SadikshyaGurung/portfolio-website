@@ -11,7 +11,6 @@ class SkillController extends Controller
    public function index()
 {
     $skills = Skill::all();
-    // dd($skills); 
     return view('skilldash', ['skills' => $skills]);
 }
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sadikshya Gurung - Resume</title>
-    <link rel="stylesheet" href="{{asset(path:'css/resume.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/resume.css') }}">
 </head>
 <body>
     <div class="container">

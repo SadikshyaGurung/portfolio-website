@@ -3,9 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\AdminController;
+
+Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
+
+
+
 
 Route::get('/', fn () => view('welcome'));
-Route::get('/admin', fn () => view('admin'));
 Route::get('/addform', fn () => view('addform'));
 
 // Skill routes
@@ -29,10 +34,13 @@ Route::get('/project', function () {
     return view('project');
 });
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 });
 Route::get('/resume', function () {
     return view('resume');
+});
+Route::get('/contactdash', function () {
+    return view('contactdash');
 });
 

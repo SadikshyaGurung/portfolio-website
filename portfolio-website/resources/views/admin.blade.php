@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="{{ asset('css/admin_org.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
 </head>
 <body>
   <aside>
     <div class="sidebar">
       <h2 class="home">Admin Panel</h2>
       <ul>
-        <li id="dashboard"><a href="admin"> &#x1F3E0; Dashboard</a></li>
+       <li id="dashboard"><a href="{{ route('admin') }}"> 🏠 Dashboard</a></li>
         <li id="projects"><a href="projectdash"> &#x1F4C8; Projects</a></li>
         <li id="skills"><a href="skilldash">&#x1F4BB; Skills</a></li>
-        <li id="contacts">&#x1F4E7; Contacts</li>
+        <li id="contacts"><a href="contactdash">&#x1F4E7; Contacts</a></li>
       </ul>
     </div>
   </aside>
   
   <main>
-    <h1>Dashboard</h1>
-    <div class="container">
-      <div class="Projectboard">
-        <h2 class="pb">Project</h2>
-        <h2 class="pb">3</h2>
-      </div>
-      <div class="Skillboard">
-        <h2 class="sb">Skill</h2>
-        <h2 class="sb">3</h2>
-      </div>
-    </div>
+    <h1>Dashboard</h1><br>
+    <div class="board">
+  <div class="Projectboard">
+    <h2 class="pb">Project</h2>
+    <h2 class="pb">{{ $projectCount ?? 'N/A' }}</h2>
+  </div>
+  
+  <div class="Skillboard">
+    <h2 class="sb">Skill</h2>
+    <h2 class="sb">{{ $skillCount ?? 'N/A' }}</h2>
+  </div>
+</div>
+
 
     <br>
     <div class="recent-projects">
@@ -44,16 +44,14 @@
       </div>
 
       <div class="grid-container">
-        <div class="grid-item">Project Todo-app</div>
-        <div class="grid-item">A web application for managing tasks.</div>
-        <div class="grid-item">Laravel, PHP</div>
-        <div class="grid-item"><a href="#">Edit</a></div>
+  @foreach ($recentProjects as $project)
+    <div class="grid-item">{{ $project->title }}</div>
+    <div class="grid-item">{{ $project->description }}</div>
+    <div class="grid-item">{{ $project->skills }}</div>
+    <div class="grid-item"><a href="{{ url('projectedit/' . $project->id) }}">Edit</a></div>
+  @endforeach
+</div>
 
-        <div class="grid-item">Project Portfolio Website</div>
-        <div class="grid-item">A website that describes our work and skills.</div>
-        <div class="grid-item">Laravel, PHP</div>
-        <div class="grid-item"><a href="#">Edit</a></div>
-      </div>
     </div>
   </main>
 </body>
