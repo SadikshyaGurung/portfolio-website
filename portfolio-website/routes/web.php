@@ -4,14 +4,27 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeSettingController;
 
 Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
+    Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
+});
 
 
 
-Route::get('/', fn () => view('welcome'));
-Route::get('/addform', fn () => view('addform'));
+Route::get('/login', [AuthController::class, 'loginView'])->name('login.View');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+
+Route::get('/logout', fn() => view('logout'))->name('logout');
+Route::get('/', fn() => view('welcome'));
+Route::get('/addform', fn() => view('addform'));
 
 // Skill routes
 Route::get('/skilldash', [SkillController::class, 'index'])->name('skilldash.index');
@@ -34,15 +47,24 @@ Route::get('/project', function () {
     return view('project');
 });
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 Route::get('/resume', function () {
     return view('resume');
 });
 Route::get('/contactdash', function () {
     return view('contactdash');
 });
+// Route::get('/', [HomeController::class, 'index']);
+
+
+
+
+// Route::get('/home', function () {
+//     return view('home');
+// });
+
 Route::get('/contact', function () {
     return view('contact');
 });

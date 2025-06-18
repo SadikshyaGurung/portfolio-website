@@ -9,8 +9,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $settings = HomeSetting::firstOrNew([]);
-        return view('home', compact('settings'));
+        // $settings = HomeSetting::firstOrNew([]);
+        // return view('home', compact('settings'));
+
+        $settings = HomeSetting::first();
+        return view('home', ['settings' => $settings]);
     }
 
     public function edit()
