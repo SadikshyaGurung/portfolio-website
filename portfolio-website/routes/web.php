@@ -22,9 +22,9 @@ use App\Models\Project;
 // Public Routes
 // ---------------------------
 
-
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware('auth')->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
     Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
     Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
 });
@@ -106,7 +106,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
 
     // Home Page Edit
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
     Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
 
