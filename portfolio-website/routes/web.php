@@ -7,33 +7,31 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AdminController;
-<<<<<<< HEAD
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeSettingController;
-=======
+
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminContactController;
 use App\Http\Controllers\ResumeController;
 use App\Models\Project;
->>>>>>> bc10d940fff07c570c94dd80b1fe18ea4a312346
+
 
 // ---------------------------
 // Public Routes
 // ---------------------------
 
-<<<<<<< HEAD
+
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
     Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
 });
-=======
+
 // Homepage
 Route::get('/', fn() => view('welcome'));
->>>>>>> bc10d940fff07c570c94dd80b1fe18ea4a312346
+
 
 // About
 Route::get('/about', fn() => view('about'));
@@ -42,7 +40,7 @@ Route::get('/about', fn() => view('about'));
 Route::get('/contact', [MessageController::class, 'showForm'])->name('contact');
 Route::post('/contact', [MessageController::class, 'store'])->name('contact.submit');
 
-<<<<<<< HEAD
+
 Route::get('/login', [AuthController::class, 'loginView'])->name('login.View');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
@@ -50,10 +48,9 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', fn() => view('logout'))->name('logout');
 Route::get('/', fn() => view('welcome'));
 Route::get('/addform', fn() => view('addform'));
-=======
 // Resume (fixed - use controller method)
 Route::get('/resume', [ResumeController::class, 'show'])->name('resume');
->>>>>>> bc10d940fff07c570c94dd80b1fe18ea4a312346
+
 
 // Public project listing
 Route::get('/project', function () {
@@ -61,7 +58,7 @@ Route::get('/project', function () {
     return view('project', compact('projects'));
 })->name('project');
 
-<<<<<<< HEAD
+
 // Route::get('/', function () {
 //     return view('home');
 // });
@@ -83,11 +80,7 @@ Route::get('/contactdash', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
-=======
-// ---------------------------
-// Authentication Routes
-// ---------------------------
->>>>>>> bc10d940fff07c570c94dd80b1fe18ea4a312346
+
 
 // Register
 Route::get('/register', [AuthController::class, 'registerView']);
