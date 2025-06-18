@@ -6,6 +6,19 @@
     <link rel="stylesheet" href="{{ asset('css/resume.css') }}">
 </head>
 <body>
+    
+<nav class="topnav">
+    <div class="topnav-left">
+        <h1 class="home-welcome">My Portfolio</h1>
+    </div>
+    <div class="topnav-right">
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/projects">Projects</a>
+        <a href="/contact">Contact</a>
+        <a href="/resume">Resume</a>
+    </div>
+</nav>
     <div class="container">
         <header>
             <div class="photo">
