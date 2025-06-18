@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Projects Dashboard</title>
   <link rel="stylesheet" href="{{ asset('css/projectdash.css') }}">
 </head>
+
 <body>
   <aside>
     <div class="sidebar">
       <h2 class="home">Admin Panel</h2>
       <ul>
         <li><a href="{{ route('admin') }}">🏠 Dashboard</a></li>
+        <li id="home-edit"><a href="home/edit"> &#x1F4C8; Home Page Settings</a></li>
         <li><a href="projectdash">📈 Projects</a></li>
         <li><a href="skilldash">💻 Skills</a></li>
         <li><a href="contactdash">📧 Contacts</a></li>
@@ -28,8 +31,8 @@
     <p><a href="{{ route('project.create') }}">Add Project</a></p>
 
     @if(session('success'))
-      <p style="color: green;">{{ session('success') }}</p>
-    @endif
+    <p style="color: green;">{{ session('success') }}</p>
+  @endif
 
     <div class="grid-header">
       <div>Project ID</div>
@@ -38,29 +41,31 @@
       <div>Skills</div>
       <div>Actions</div>
     </div>
-<div class="grid-container">
-  @foreach ($projects as $project)
-    <div class="grid-item">{{ $project->project_id }}</div>
-    <div class="grid-item">{{ $project->title }}</div>
-    <div class="grid-item">{{ $project->description }}</div>
-    <div class="grid-item">
+    <div class="grid-container">
+      @foreach ($projects as $project)
+      <div class="grid-item">{{ $project->project_id }}</div>
+      <div class="grid-item">{{ $project->title }}</div>
+      <div class="grid-item">{{ $project->description }}</div>
+      <div class="grid-item">
       @php
-        $skillIds = explode(',', $project->skills);
-        $skillTitles = \App\Models\Skill::whereIn('id', $skillIds)->pluck('title')->toArray();
+      $skillIds = explode(',', $project->skills);
+      $skillTitles = \App\Models\Skill::whereIn('id', $skillIds)->pluck('title')->toArray();
       @endphp
       {{ implode(', ', $skillTitles) }}
-    </div>
-    <div class="grid-item">
+      </div>
+      <div class="grid-item">
       <a href="{{ route('project.edit', $project->id) }}">Edit</a>
-      <form action="{{ route('project.destroy', $project->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Delete this project?');">
+      <form action="{{ route('project.destroy', $project->id) }}" method="POST" style="display:inline;"
+        onsubmit="return confirm('Delete this project?');">
         @csrf
         @method('DELETE')
         <button type="submit">Delete</button>
       </form>
+      </div>
+    @endforeach
     </div>
-  @endforeach
-</div>
 
   </main>
 </body>
+
 </html>

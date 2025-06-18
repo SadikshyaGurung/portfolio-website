@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\MessageController;
-use App\Http\Controllers\HomeController;
+
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeSettingController;
+
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\AdminContactController;
 use App\Http\Controllers\ResumeController;
 use App\Models\Project;
@@ -18,12 +21,21 @@ use App\Http\Controllers\PersonalDetailController;
 
 
 
+
 // ---------------------------
 // Public Routes
 // ---------------------------
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->group(function () {
+
+    Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
+    Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
+});
+
 // Homepage
 Route::get('/', fn() => view('welcome'));
+
 
 // About
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'index']);
@@ -33,8 +45,17 @@ Route::get('/about', [App\Http\Controllers\AboutController::class, 'index']);
 Route::get('/contact', [MessageController::class, 'showForm'])->name('contact');
 Route::post('/contact', [MessageController::class, 'store'])->name('contact.submit');
 
+
+Route::get('/login', [AuthController::class, 'loginView'])->name('login.View');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+
+Route::get('/logout', fn() => view('logout'))->name('logout');
+Route::get('/', fn() => view('welcome'));
+Route::get('/addform', fn() => view('addform'));
 // Resume (fixed - use controller method)
 Route::get('/resume', [ResumeController::class, 'show'])->name('resume');
+
 
 // Public project listing
 Route::get('/project', function () {
@@ -42,9 +63,29 @@ Route::get('/project', function () {
     return view('project', compact('projects'));
 })->name('project');
 
-// ---------------------------
-// Authentication Routes
-// ---------------------------
+
+// Route::get('/', function () {
+//     return view('home');
+// });
+Route::get('/resume', function () {
+    return view('resume');
+});
+Route::get('/contactdash', function () {
+    return view('contactdash');
+});
+// Route::get('/', [HomeController::class, 'index']);
+
+
+
+
+// Route::get('/home', function () {
+//     return view('home');
+// });
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
 
 // Register
 Route::get('/register', [AuthController::class, 'registerView']);
@@ -74,7 +115,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/personal-details', [PersonalDetailController::class, 'update'])->name('personal.update');
 
     // Home Page Edit
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
     Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
 

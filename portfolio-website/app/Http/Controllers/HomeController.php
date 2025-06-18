@@ -10,12 +10,16 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $settings = HomeSetting::firstOrNew([]);
+
+
+        $settings = HomeSetting::first();
+        return view('home', ['settings' => $settings]);
 
         // Fetch the latest 4 projects from the database
-        $projects = Project::latest()->take(4)->get();
+        // $projects = Project::latest()->take(4)->get();
 
-        return view('home', compact('settings', 'projects'));
+        // return view('home', compact('settings', 'projects'));
+
     }
 
     public function edit()
