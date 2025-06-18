@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('projects', function (Blueprint $table) {
+       Schema::create('skills', function (Blueprint $table) {
     $table->id();
-    $table->string('project_id')->unique();
-    $table->string('title');            // Project Title
-    $table->text('description');       // Project Description
-    $table->text('skills');            // Store skill ids as comma-separated string or JSON
+    $table->string('title');
+    $table->text('description');
+    $table->string('skills');
     $table->timestamps();
 });
+
     }
 
     /**
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('skills');
     }
 };
