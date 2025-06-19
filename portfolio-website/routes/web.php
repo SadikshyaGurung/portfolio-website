@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // Homepage
-Route::get('/', fn() => view('welcome'));
+Route::get('/', fn() => view('home'));
 
 
 // About
