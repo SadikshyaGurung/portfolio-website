@@ -8,20 +8,21 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-   public function index() {
-    $settings = HomeSetting::first();  // or however you fetch the settings
-    
-    // Always check if $settings is found to avoid null errors
-    if (!$settings) {
-        // You can set a default or create one on the fly
-        $settings = new HomeSetting([
-            'welcome_heading' => 'Welcome to My Portfolio',
-            'welcome_text' => 'Some default welcome text here.'
-        ]);
-    }
+    public function index()
+    {
+        $settings = HomeSetting::first();  // or however you fetch the settings
 
-    return view('home', compact('settings'));
-}
+        // Always check if $settings is found to avoid null errors
+        if (!$settings) {
+            // You can set a default or create one on the fly
+            $settings = new HomeSetting([
+                'welcome_heading' => 'Welcome to My Portfolio',
+                'welcome_text' => 'Some default welcome text here.'
+            ]);
+        }
+
+        return view('home', compact('settings'));
+    }
 
 
     public function edit()

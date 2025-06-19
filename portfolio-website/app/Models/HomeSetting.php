@@ -9,6 +9,8 @@ class HomeSetting extends Model
 {
     use HasFactory;
 
+    protected $table = 'home_settings';
+
     protected $fillable = [
         'welcome_heading',
         'welcome_text',
