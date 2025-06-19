@@ -41,7 +41,6 @@
     <div class="grid-header">
       <div>Title</div>
       <div>Description</div>
-      <div>Skills</div>
       <div>Actions</div>
     </div>
 
@@ -49,8 +48,7 @@
       @foreach ($skills as $skill)
         <div class="grid-item">{{ $skill->title }}</div>
         <div class="grid-item">{{ $skill->description }}</div>
-        <div class="grid-item">{{ $skill->skills }}</div>
-        <div class="grid-item">
+          <div class="grid-item">
           <form action="{{ route('skilldash.index') }}/{{ $skill->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this skill?');">
             @csrf
             @method('DELETE')

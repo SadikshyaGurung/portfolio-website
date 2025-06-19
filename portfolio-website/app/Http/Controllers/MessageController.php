@@ -1,56 +1,38 @@
-<?php
-
+<?php 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use Illuminate\Http\Request;
-use App\Models\Message;  // Make sure to import the model
 
 class MessageController extends Controller
 {
-    // Display all messages in the dashboard
-    public function index()
+    // Other methods...
+    
+
+    // Show the edit form
+    public function edit($id)
     {
-        $messages = Message::all();
-        return view('contactdash', compact('messages'));
-    }
-    public function showForm()
-    {
-        return view('contact'); // or 'contact.index' depending on your file
+        $message = Message::findOrFail($id);
+        return view('edit-message', compact('message')); // Create an 'edit-message' view
     }
 
-    // Store the message in the database
+    // Update the message
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'description' => 'required|string|max:500',
-        ]);
-
-        $message = new Message();
-        $message->name = $validated['name'];
-        $message->email = $validated['email'];
-        $message->description = $validated['description'];
-        $message->save();
-
-        return redirect()->route('contact')->with('success', 'Your message has been sent!');
-    }
-    public function submit(Request $request)
 {
     $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email',
-        'message' => 'required|string',
+        'message' => 'required|string|max:500',  // 'message' is coming from the form field
     ]);
 
-    Message::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'description' => $request->message, // store message text here
-    ]);
+    // Create new message from the form data
+    $message = new Message();
+    $message->name = $request->name;
+    $message->email = $request->email;
+    $message->description = $request->message;  // Use 'message' field from the form
+    $message->save();
 
-    return redirect()->back()->with('success', 'Thank you for your message!');
+    // Redirect to the contact dashboard with success message
+    return redirect()->route('contactdash')->with('success', 'Message sent successfully!');
 }
-
-
 }

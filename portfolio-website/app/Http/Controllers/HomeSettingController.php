@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HomeSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeSettingController extends Controller
 {
@@ -15,6 +16,7 @@ class HomeSettingController extends Controller
 
     public function update(Request $request)
     {
+        // Validate the form data
         $data = $request->validate([
             'welcome_heading' => 'nullable|string',
             'welcome_text' => 'nullable|string',
@@ -33,12 +35,13 @@ class HomeSettingController extends Controller
                     'description' => $project['description'] ?? '',
                 ];
 
-                // Handle file upload
-                if (isset($project['image_url']) && $project['image_url'] instanceof \Illuminate\Http\UploadedFile) {
-                    $path = $project['image_url']->store('projects', 'public');
+                // Handle file upload for the image URL
+                if ($request->hasFile("projects.{$i}.image_url")) {
+                    $file = $request->file("projects.{$i}.image_url");
+                    $path = $file->store('projects', 'public');  // Store image in the 'public/projects' folder
                     $proj['image_url'] = 'storage/' . $path;
-                } elseif (isset($project['existing_image_url'])) {
-                    // Keep existing image if no new file uploaded
+                } elseif (!empty($project['existing_image_url'])) {
+                    // If no new image uploaded, keep the existing image URL
                     $proj['image_url'] = $project['existing_image_url'];
                 } else {
                     $proj['image_url'] = '';
@@ -48,12 +51,14 @@ class HomeSettingController extends Controller
             }
         }
 
+        // Add featured projects to the data array
         $data['featured_projects'] = $projects;
-        unset($data['projects']);
+        unset($data['projects']);  // Remove the projects from the array, we already added them
 
+        // Update the home settings or create new if none exists
         HomeSetting::updateOrCreate([], $data);
 
-        return back()->with('success', 'Homepage settings saved.');
+        // Redirect back with a success message
+       return redirect()->route('/')->with('success', 'updated successfully!');
     }
-
 }

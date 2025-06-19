@@ -1,33 +1,67 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffdede;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
+
+/* Fixed Navbar */
 nav.topnav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffa3a3;
-    padding: 10px 30px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #ffc7c7;
+    padding: 30px 40px;
+    box-shadow: 0 2px 5px rgba(255, 207, 207, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
 }
 
-nav.topnav a {
-    margin-left: 20px;
+/* Logo / title section */
+.topnav-left h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+/* Nav links */
+.topnav-right {
+    display: flex;
+    gap: 15px;
+    margin-right: 50px;
+}
+
+.topnav-right a {
+    color: #ffffff;
     text-decoration: none;
-    color: #fff;
     font-weight: bold;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
 }
 
-nav.topnav a:hover {
+.topnav-right a:hover {
     text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
 }
 
+/* Main content area (below the fixed navbar) */
+main {
+    padding: 50px 50px 50px 50px; /* Adjust padding on all sides */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns content at the top */
+    margin-top: 120px; /* Create space below the fixed navbar */
+    min-height: 100vh; /* Ensure the main area is at least full viewport height */
+}
 
 .container {
     width: 60%;
-    margin: 40px auto;
     background-color: #ffffff;
     padding: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -36,7 +70,7 @@ nav.topnav a:hover {
 
 .contact-box h2 {
     font-size: 28px;
-    color: #d4648d;
+    color: #ff9090;
     text-align: center;
     margin-bottom: 30px;
 }
@@ -60,12 +94,12 @@ textarea {
 input:focus,
 textarea:focus {
     outline: none;
-    border-color: #f797b5;
-    box-shadow: 0 0 5px #f797b5;
+    border-color: #f79797;
+    box-shadow: 0 0 5px #f79797;
 }
 
 .next-button {
-    background-color: #d4648d;
+    background-color: #ea7d7d;
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -77,5 +111,5 @@ textarea:focus {
 }
 
 .next-button:hover {
-    background-color: #c3577d;
+    background-color: #f47575;
 }

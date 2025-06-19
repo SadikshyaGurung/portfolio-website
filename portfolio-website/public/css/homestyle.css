@@ -1,194 +1,208 @@
-/* Orange Theme Portfolio Homepage */
-
-/* General resets and body */
+/* General Resets and Body */
 body {
-<<<<<<< HEAD
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f1bae1;
+    font-family: Arial, sans-serif;
+    background-color: #ffdede;
+    color: #333;
     margin: 0;
     padding: 0;
-    color: #222;
-=======
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fff7f0;
-  /* light orange background */
-  color: #222;
-  margin: 0;
-  padding: 0;
->>>>>>> f954875410dcef6604e97fdbda5a7065ccc4c1d3
+}
+nav.topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffc7c7;
+    padding: 30px 40px;
+    box-shadow: 0 2px 5px rgba(255, 207, 207, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
 }
 
-/* Top navigation */
-.topnav {
-  background: #fff;
-  color: #222;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 40px;
-  height: 70px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+/* Logo / title section */
+.topnav-left h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ffffff;
 }
 
-.topnav nav {
-  display: flex;
-  gap: 24px;
+/* Nav links */
+.topnav-right {
+    display: flex;
+    gap: 15px;
+    margin-right: 50px;
+    
 }
 
-.topnav a,
-.topnav button[type="submit"] {
-  color: #222;
-  background: none;
-  border: none;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 10px 18px;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-  cursor: pointer;
-  outline: none;
-  margin-left: 0;
+.topnav-right a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px 10px; /* ensures clickable space */
+    transition: background-color 0.3s ease;
 }
 
-.topnav a:hover,
-.topnav button[type="submit"]:hover {
-  background: #ffe0b2;
-  /* light orange hover */
-  color: #ff6f00;
+.topnav-right a:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
 }
+
+
 
 /* Container */
 .container {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 30px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 30px;
+   
 }
 
-/* Crafting section */
+/* Crafting Section */
 .crafting-section {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+    background-color: #ffebeb;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
 }
 
 .crafting-image img {
-  width: 420px;
-  height: 420px;
-  object-fit: cover;
-  border-radius: 18px;
-  display: block;
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 18px;
+    display: block;
+    padding: 20px;
 }
 
 .crafting-text {
-  flex: 1;
+    flex: 1;
 }
 
 .crafting-text h2 {
-  font-size: 2.2rem;
-  color: #ff6f00;
-  margin-bottom: 18px;
+    font-size: 2.2rem;
+    color: #ff787a; /* Orange accent */
+    margin-bottom: 18px;
 }
 
 .crafting-text p {
-  font-size: 1.15rem;
-  color: #444;
-  margin-bottom: 24px;
+    font-size: 1.15rem;
+    color: #444;
+    margin-bottom: 24px;
 }
 
 .crafting-button {
-  background: #ff6f00;
-  color: #fff;
-  border: none;
-  padding: 12px 32px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
+    background: #ff787a;
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
 .crafting-button:hover {
-  background: #ffa040;
+    background: #ff787a; /* Light orange hover */
 }
 
-/* Projects grid: 3 columns */
+/* Featured Projects Section */
 .projects {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 24px;
 }
 
-.project-featured {
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.10);
-  padding: 20px;
-  background: #fffbe6;
-  text-align: center;
-  transition: transform 0.18s, box-shadow 0.18s;
+.project-card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.10);
+    padding: 20px;
+    background: #fffbe6; /* Light orange background for project cards */
+    text-align: center;
+    transition: transform 0.18s, box-shadow 0.18s;
 }
 
-.project-featured:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 6px 24px rgba(255, 152, 0, 0.18);
+.project-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 6px 24px rgba(255, 152, 0, 0.18);
 }
 
-.project-featured img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 14px;
+.project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 14px;
 }
 
-.project-featured h3 {
-  color: #ff6f00;
-  margin: 10px 0 8px 0;
-  font-size: 1.2rem;
+.project-card h3 {
+    color: #ff787a; /* Orange title for projects */
+    margin: 10px 0 8px 0;
+    font-size: 1.2rem;
 }
 
-.project-featured p {
-  color: #444;
-  font-size: 1rem;
+.project-card p {
+    color: #444;
+    font-size: 1rem;
 }
 
 /* About Me Section */
 .crafting-section>h2 {
-  color: #ff6f00;
-  margin-bottom: 1rem;
+    color: #ff787a; /* Orange for headings */
+    margin-bottom: 1rem;
 }
 
 .crafting-section>div p {
-  color: #444;
-  line-height: 1.5;
+    color: #444;
+    line-height: 1.5;
 }
 
 /* Responsive Design */
 @media (max-width: 1100px) {
-  .container {
-    padding: 10px;
-  }
+    .container {
+        padding: 10px;
+    }
 
-  .crafting-section {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    .crafting-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
     .crafting-image img {
-      width: 420px;
-      height: 240px;
-      object-fit: cover;
-      border-radius: 18px;
-      display: block; }
+        width: 420px;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 18px;
+        display: block;
+    }
 
-  .projects {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+    .projects {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Other Customizations for About Me, Sections */
+section h2 {
+    margin-bottom: 10px;
+    color: #ffb0b0;
+    border-bottom: 2px solid #ffa3a3; /* Light pink border */
+    padding-bottom: 5px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 6px;
 }

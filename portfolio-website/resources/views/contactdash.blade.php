@@ -58,7 +58,6 @@
                 <div class="grid-item">{{ $message->email }}</div>
                 <div class="grid-item">{{ $message->description }}</div>
                 <div class="grid-item">
-                    <a href="{{ route('message.edit', $message->id) }}">Edit</a>
                     <form action="{{ route('message.destroy', $message->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')

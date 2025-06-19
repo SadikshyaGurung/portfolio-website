@@ -8,11 +8,13 @@ use App\Models\Skill;
 
 class ProjectController extends Controller
 {
-    public function index()
-    {
-        $projects = Project::all();
-        return view('projectdash', compact('projects'));
-    }
+public function index()
+{
+    // Eager load related skills
+    $projects = Project::with('skills')->get();
+    return view('projectdash', compact('projects'));
+}
+
 
     public function create()
     {

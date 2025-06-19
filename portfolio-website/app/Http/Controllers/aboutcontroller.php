@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use App\Models\PersonalDetail;
 
 class AboutController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        $personalDetail = PersonalDetail::where('user_id', $user->id)->first();
+        // Fetch the personal detail record for the user (you can display it to all users, not just authenticated)
+        $personalDetail = PersonalDetail::first();  // No authentication check required
 
+        // If personal details are not found, you can handle it by showing a message or redirecting
+        if (!$personalDetail) {
+            return redirect()->route('home')->with('error', 'Personal details not found.');
+        }
+
+        // Return the 'about' view with the personal details
         return view('about', compact('personalDetail'));
     }
 }
-

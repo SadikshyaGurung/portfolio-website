@@ -5,11 +5,25 @@
   font-family: 'Arial', sans-serif;
 }
 
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: #ffe1ec;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .sidebar ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  flex-grow: 1; /* allow it to grow to take full height */
+  flex-grow: 1;
 }
 
 .sidebar li {
@@ -32,9 +46,8 @@
   color: #000;
 }
 
-
 .logout-form {
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   border-top: 1px solid #f3b6b6;
   background-color: #ffe1ec;
 }
@@ -54,7 +67,6 @@
 .logout-button:hover {
   color: #0056b3;
 }
-
 
 
 main {

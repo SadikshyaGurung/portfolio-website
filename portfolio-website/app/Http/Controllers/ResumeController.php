@@ -1,21 +1,27 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+
 use App\Models\Skill;
 use App\Models\Project;
 use App\Models\PersonalDetail;
 
 class ResumeController extends Controller
 {
-   public function show() {
-    $user = Auth::user();
+    public function show()
+    {
+        // Fetch personal detail record for any user (not necessarily the authenticated one)
+        $personalDetail = PersonalDetail::first();  // Or any other logic to fetch personal details
 
-    // Fetch personal detail record for the logged-in user
-    $personalDetail = PersonalDetail::where('user_id', $user->id)->first();
+        // Handle case where personal details might not exist
+        if (!$personalDetail) {
+            return redirect()->route('home')->with('error', 'Personal details not found.');
+        }
 
-    // Assuming you also fetch skills and projects as you currently do
-   $skills = Skill::all();
-   $projects = Project::all();
-    return view('resume', compact('personalDetail', 'skills', 'projects'));
-}
+        // Fetch all skills and projects (accessible to everyone)
+        $skills = Skill::all();
+        $projects = Project::all();
+
+        // Return the view with the data
+        return view('resume', compact('personalDetail', 'skills', 'projects'));
+    }
 }

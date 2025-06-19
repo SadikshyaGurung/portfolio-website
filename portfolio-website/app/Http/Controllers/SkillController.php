@@ -28,20 +28,17 @@ class SkillController extends Controller
 {
     return view('addskill'); 
 }
-
 public function store(Request $request)
 {
     $validated = $request->validate([
         'title' => 'required|string|max:255',
         'description' => 'required|string',
-        'skills' => 'required|string',
     ]);
 
-    
     Skill::create($validated);
 
-    
     return redirect()->route('skilldash.index')->with('success', 'Skill added successfully!');
 }
+
 
 }

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PortfolioUpdateRequest;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 
 class AuthController extends Controller
 {
@@ -16,14 +18,16 @@ class AuthController extends Controller
         return view("register");
     }
 
-    public function register(PortfolioUpdateRequest $request)
-    {
-        $validated = $request->validated();
-        $validated['password'] = Hash::make($validated['password']);
-        User::create($validated);
-        return redirect("/login");
+    
+public function register(RegisterRequest $request)
+{
+    $validated = $request->validated();
+    $validated['password'] = Hash::make($validated['password']);
+    User::create($validated);
 
-    }
+    return redirect("/login")->with('success', 'Registration successful! Please login.');
+}
+
     public function loginView()
     {
         return view("login");

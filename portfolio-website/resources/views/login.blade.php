@@ -29,7 +29,8 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit">Login</button><br>
+             <button type="submit"><a href="register">Register</a></button>
         </form>
     </div>
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Personal Details</title>
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/personal.css') }}">
 </head>
 <body>
   <aside>
@@ -27,11 +27,9 @@
 
   <main>
     <h1>Personal Details</h1>
-<form action="{{ route('personal') }}" method="POST">
+  <form action="{{ route('personal.update') }}" method="POST">
     @csrf
-    <!-- Add method spoofing if needed -->
-    <!-- @method('POST') or @method('PUT') if your route expects PUT -->
-
+  
     <input type="text" name="name" value="{{ old('name', $personalDetail->name ?? '') }}" placeholder="Name" required>
     <input type="date" name="dob" value="{{ old('dob', $personalDetail->dob ?? '') }}" placeholder="Date of Birth">
     <input type="email" name="email" value="{{ old('email', $personalDetail->email ?? '') }}" placeholder="Email" required>
@@ -41,7 +39,7 @@
     <button type="submit">Save</button>
 </form>
 
-<!-- Display errors if any -->
+
 @if ($errors->any())
     <div class="errors">
         <ul>

@@ -1,11 +1,11 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #fff1f5;
-    margin: 0;
-    padding: 50px 10%; /* you can keep or remove this padding if you prefer */
-    text-align: center;
-}
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffdede;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
 nav.topnav {
     display: flex;
     justify-content: space-between;
@@ -32,6 +32,7 @@ nav.topnav {
     display: flex;
     gap: 15px;
     margin-right: 50px;
+    
 }
 
 .topnav-right a {
@@ -48,6 +49,7 @@ nav.topnav {
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 6px;
 }
+
 
 /* Add margin-top to main so it's below navbar */
 .main {

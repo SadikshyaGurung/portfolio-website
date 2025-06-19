@@ -11,6 +11,6 @@ class Register extends Model
     use HasFactory;
 
     use SoftDeletes;
-    protected $table = 'register';
+    protected $table = 'registers';
     protected $fillable = ['name', 'email', 'password'];
 }

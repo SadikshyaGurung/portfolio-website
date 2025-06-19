@@ -6,18 +6,20 @@
   <link rel="stylesheet" href="{{asset('css/project.css')}}">
 </head>
 <body>
- <nav class="topnav">
+  <div class="navbar">
+    <nav class="topnav">
     <div class="topnav-left">
         <h1>My Portfolio</h1>
     </div>
     <div class="topnav-right">
-        <a href="/home">Home</a>
+        <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/project">Projects</a>
         <a href="/contact">Contact</a>
         <a href="/resume">Resume</a>
     </div>
-</nav>
+    </nav>
+</div>
 <div class="main">
   <h1>📁 My Project Portfolio</h1>
 <div class="container">
