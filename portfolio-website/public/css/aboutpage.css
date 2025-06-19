@@ -1,75 +1,114 @@
- body{
-    
-    top: 500px;
-    align-items: center;
-    justify-content: center;
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffdede;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+nav.topnav {
     display: flex;
-    background-color: #fbe7ff;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffc7c7;
+    padding: 30px 40px;
+    box-shadow: 0 2px 5px rgba(255, 207, 207, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
 
- }
-       
-    .about{
-            position: fixed;
-            margin:50px;
-            top: 20px;
-            height: 550px;
-            font-family: Arial, sans-serif;
-            background-color: #fef7ff;
-            text-align: center; 
-            width: 900px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 30px;
-            box-shadow: 0 0 10px rgb(255, 217, 217);
-        }
-        h1 {
-            font-size: 2.5rem;
-            
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            
-        }
-        h2{
-            font-size: 1rem;
-           
-        }
-    h3{
-        font-size: 1rem;
-    }
-    .cc{
-        display: flex;
-        justify-content: space-between;
-        margin: 0;
-        padding: 0%;
-    }
-        p {
-            font-size: 1rem;
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-bottom: 20px;
-            margin: 0%;
-         
-        }
-        img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        } 
-        .photo{
-            align-items: center;
-            justify-content: center;
-            display: flex;
-        }
-         .email{
-            padding-left: 20px;
-            text-align: left;
-            justify-content: left;
-         }
-          .contact{
-            padding-right:20px;
-            text-align: right;
-            justify-content: right;
-          }
+/* Logo / title section */
+.topnav-left h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+/* Nav links */
+.topnav-right {
+    display: flex;
+    gap: 15px;
+    margin-right: 50px;
+    
+}
+
+.topnav-right a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px 10px; /* ensures clickable space */
+    transition: background-color 0.3s ease;
+}
+
+.topnav-right a:hover {
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+}
+
+
+/* About section */
+main {
+    padding-top: 100px; /* Ensures content is below navbar */
+}
+
+.about {
+    background-color: #fff7f7;
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 180, 180, 0.4);
+    text-align: center;
+}
+
+/* Headings */
+.about h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #ff5e5e;
+}
+
+.about h2, .about h3 {
+    margin: 5px 0;
+    color: #555;
+    font-weight: normal;
+}
+
+/* Contact section */
+.cc {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0 20px;
+    margin-bottom: 20px;
+    border-top: 1px solid #ffd2d2;
+    border-bottom: 1px solid #ffd2d2;
+}
+
+.email, .contact {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Paragraph */
+.about p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 20px;
+    text-align: justify;
+    padding: 0 10px;
+}
+
+/* Image styling */
+.photo img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}

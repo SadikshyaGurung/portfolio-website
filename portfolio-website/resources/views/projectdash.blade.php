@@ -1,64 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="{{ asset('css/projectdash.css') }}">
-</head>
-<body>
-<aside>
-    <div class="sidebar">
-        <h2 class="home">Admin Panel</h2>
-        <ul>
-            <li id="dashboard"><a href="/admin">&#x1F3E0; Dashboard</a></li>
-            <li id="projects"><a href="{{ route('projectdash.index') }}">&#x1F4C8; Projects</a></li>
-            <li id="skills"><a href="{{ route('skilldash.index') }}">&#x1F4BB; Skills</a></li>
-            <li id="contacts">&#x1F4E7; Contacts</li>
-        </ul>
-    </div>
-</aside>
 
-<main>
-    <h3>Project Table</h3>
+<head>
+  <title>Projects Dashboard</title>
+  <link rel="stylesheet" href="{{ asset('css/projectdash.css') }}">
+</head>
+
+<body>
+  <aside>
+    <div class="sidebar">
+      <h2 class="home">Admin Panel</h2>
+      <ul>
+        <li><a href="{{ route('admin') }}">🏠 Dashboard</a></li>
+        <li id="home-edit"><a href="home/edit"> &#x1F4C8; Home Page Settings</a></li>
+        <li><a href="projectdash">📈 Projects</a></li>
+        <li><a href="skilldash">💻 Skills</a></li>
+        <li><a href="contactdash">📧 Contacts</a></li>
+      </ul>
+
+      <!-- Logout at bottom -->
+      <form action="{{ route('logout') }}" method="POST" class="logout-form">
+        @csrf
+        <button type="submit" class="logout-button">Logout</button>
+      </form>
+    </div>
+  </aside>
+
+  <main>
+    <h2>Projects Table</h2>
     <p><a href="{{ route('project.create') }}">Add Project</a></p>
 
     @if(session('success'))
-        <p style="color: green;">{{ session('success') }}</p>
-    @endif
+    <p style="color: green;">{{ session('success') }}</p>
+  @endif
 
-    <table>
-        <thead>
-            <tr>
-                <th>Project ID</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Skills</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach ($projects as $project)
-            <tr>
-                <td>{{ $project->project_id }}</td>
-                <td>{{ $project->title }}</td>
-                <td>{{ $project->description }}</td>
-                <td>
-                    @php
-                        $skillIds = explode(',', $project->skills);
-                        $skillTitles = \App\Models\Skill::whereIn('id', $skillIds)->pluck('title')->toArray();
-                    @endphp
-                    {{ implode(', ', $skillTitles) }}
-                </td>
-                <td>
-                    <a href="{{ route('project.edit', $project->id) }}">Edit</a>
-                    <form action="{{ route('project.destroy', $project->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Delete this project?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
-</main>
+    <div class="grid-header">
+      <div>Project ID</div>
+      <div>Title</div>
+      <div>Description</div>
+      <div>Skills</div>
+      <div>Actions</div>
+    </div>
+    <div class="grid-container">
+      @foreach ($projects as $project)
+      <div class="grid-item">{{ $project->project_id }}</div>
+      <div class="grid-item">{{ $project->title }}</div>
+      <div class="grid-item">{{ $project->description }}</div>
+      <div class="grid-item">
+      @php
+      $skillIds = explode(',', $project->skills);
+      $skillTitles = \App\Models\Skill::whereIn('id', $skillIds)->pluck('title')->toArray();
+      @endphp
+      {{ implode(', ', $skillTitles) }}
+      </div>
+      <div class="grid-item">
+      <a href="{{ route('project.edit', $project->id) }}">Edit</a>
+      <form action="{{ route('project.destroy', $project->id) }}" method="POST" style="display:inline;"
+        onsubmit="return confirm('Delete this project?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Delete</button>
+      </form>
+      </div>
+    @endforeach
+    </div>
+
+  </main>
 </body>
+
 </html>

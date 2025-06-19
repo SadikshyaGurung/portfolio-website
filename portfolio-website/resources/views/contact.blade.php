@@ -1,16 +1,33 @@
-@extends('partials.layout')
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ asset('css/contactstyle.css') }}">
-@section('title', 'Portfolio Website | Contact Us')
-@section('content')
-
-    <div class="contact-box">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio Website | Contact Us</title>
+    <link rel="stylesheet" href="{{asset('css/contactstyle.css')}}">
+</head>
+<body>
+    
+<nav class="topnav">
+    <div class="topnav-left">
+        <h1 class="home-welcome">My Portfolio</h1>
+    </div>
+    <div class="topnav-right">
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/project">Projects</a>
+        <a href="/contact">Contact</a>
+        <a href="/resume">Resume</a>
+    </div>
+</nav>
+    <div class="container contact-box">
         <h2>Let's Connect</h2>
-        <form>
+        <form action="{{ route('contact.submit') }}" method="POST">
+    @csrf
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
             <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-            <a href="nextpage.html" class="next-button">Next Page</a>
+            <button type="submit" class="next-button">Send Message</button>
         </form>
     </div>
-@endsection
+</body>
+</html>

@@ -1,32 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Edit Project</title>
-</head>
-<body>
-    <h2>Edit Project</h2>
-    <form action="{{ route('project.update', $project->id) }}" method="POST">
+<!-- resources/views/home_edit.blade.php -->
+@extends('partials.layout')
+
+@section('title', 'Edit Home')
+
+@section('content')
+    @if(session('success'))
+        <p class="success">{{ session('success') }}</p>
+    @endif
+
+    <form action="{{ route('home.update') }}" method="POST">
         @csrf
-        @method('PUT')
 
-        <label>Title:</label><br>
-        <input type="text" name="title" value="{{ $project->title }}"><br><br>
+        <label>Welcome Heading</label>
+        <input type="text" name="welcome_heading" value="{{ old('welcome_heading', $settings->welcome_heading) }}">
 
-        <label>Description:</label><br>
-        <textarea name="description">{{ $project->description }}</textarea><br><br>
+        <label>Welcome Text</label>
+        <textarea name="welcome_text">{{ old('welcome_text', $settings->welcome_text) }}</textarea>
 
-        <label>Skills:</label><br>
-        @php
-            $selectedSkills = explode(',', $project->skills);
-        @endphp
-        @foreach ($skills as $skill)
-            <input type="checkbox" name="skills[]" value="{{ $skill->id }}"
-                {{ in_array($skill->id, $selectedSkills) ? 'checked' : '' }}>
-            {{ $skill->title }}<br>
-        @endforeach
-        <br>
+        <h3>Featured Projects</h3>
+        <div id="projects">
+            @foreach(old('projects', $settings->featured_projects ?? []) as $i => $proj)
+                <div class="project-block">
+                    <input name="projects[{{ $i }}][title]" placeholder="Title" value="{{ $proj['title'] }}">
+                    <input name="projects[{{ $i }}][image_url]" placeholder="Image URL" value="{{ $proj['image_url'] }}">
+                    <textarea name="projects[{{ $i }}][description]"
+                        placeholder="Description">{{ $proj['description'] }}</textarea>
+                    <button type="button" onclick="this.parentElement.remove()">Remove</button>
+                </div>
+            @endforeach
+        </div>
 
-        <button type="submit">Update</button>
+        <button type="button" onclick="addProject()">Add Project</button>
+
+        <label>About Text</label>
+        <textarea name="about_text">{{ old('about_text', $settings->about_text) }}</textarea>
+
+        <button type="submit">Save</button>
     </form>
-</body>
-</html>
+
+    <script>
+        function addProject() {
+            const idx = document.querySelectorAll('.project-block').length;
+            document.getElementById('projects').insertAdjacentHTML('beforeend', `
+                                                                <div class="project-block">
+                                                                    <input name="projects[${idx}][title]" placeholder="Title">
+                                                                    <input name="projects[${idx}][image_url]" placeholder="Image URL">
+                                                                    <textarea name="projects[${idx}][description]" placeholder="Description"></textarea>
+                                                                    <button type="button" onclick="this.parentElement.remove()">Remove</button>
+                                                                </div>`);
+        }
+    </script>
+@endsection

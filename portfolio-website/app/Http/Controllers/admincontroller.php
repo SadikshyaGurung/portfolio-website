@@ -2,9 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
+use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class admincontroller extends Controller
+class AdminController extends Controller
 {
-    
+    public function dashboard()
+    {
+        $projectCount = Project::count();
+        $skillCount = Skill::count();
+        $recentProjects = Project::latest()->take(5)->get(); // Fetch 5 most recent
+
+        return view('admin', compact('projectCount', 'skillCount', 'recentProjects'));
+    }
+
+    public function uploadImage(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('uploads', 'public');
+            return response()->json(['url' => Storage::url($path)]);
+        }
+
+        return response()->json(['error' => 'No image uploaded'], 400);
+    }
+
 }
+
