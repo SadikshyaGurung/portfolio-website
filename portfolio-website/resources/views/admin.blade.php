@@ -21,15 +21,16 @@
         <li id="skills"><a href="skilldash">&#x1F4BB; Skills</a></li>
 
         <li id="contacts"><a href="contactdash">&#x1F4E7; Contacts</a></li>
-        <li id="contacts">
-          &#x1F4E7; Contacts
-        </li>
+        <li><a href="{{ route('personal') }}">👤 Personal Details</a></li>
+
+
       </ul>
-      <!-- Logout button at the bottom -->
-      <form action="{{ route('logout') }}" method="POST" class="logout-form">
-        @csrf
-        <button type="submit" class="logout-button">Logout</button>
-      </form>
+     <form method="POST" action="{{ route('logout') }}" class="logout-form">
+  @csrf
+  <button type="submit" class="logout-button">Logout</button>
+</form>
+
+
     </div>
   </aside>
 
@@ -58,15 +59,26 @@
         <div>Skills</div>
         <div>Actions</div>
       </div>
-
-      <div class="grid-container">
-        @foreach ($recentProjects as $project)
-      <div class="grid-item">{{ $project->title }}</div>
-      <div class="grid-item">{{ $project->description }}</div>
-      <div class="grid-item">{{ $project->skills }}</div>
-      <div class="grid-item"><a href="{{ url('projectedit/' . $project->id) }}">Edit</a></div>
+<div class="grid-container">
+  @foreach ($recentProjects as $project)
+    <div class="grid-item">{{ $project->title }}</div>
+    <div class="grid-item">{{ $project->description }}</div>
+    <div class="grid-item">
+  @if (!empty($project->skills) && is_iterable($project->skills))
+    @foreach ($project->skills as $skill)
+      {{ $skill->name }}{{ !$loop->last ? ', ' : '' }}
     @endforeach
-      </div>
+  @else
+    <em>No skills</em>
+  @endif
+</div>
+
+    <div class="grid-item">
+      <a href="{{ url('projectedit/' . $project->id) }}">Edit</a>
+    </div>
+  @endforeach
+</div>
+
 
     </div>
   </main>

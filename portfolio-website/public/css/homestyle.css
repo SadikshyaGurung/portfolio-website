@@ -2,12 +2,20 @@
 
 /* General resets and body */
 body {
+<<<<<<< HEAD
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f1bae1;
+    margin: 0;
+    padding: 0;
+    color: #222;
+=======
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #fff7f0;
   /* light orange background */
   color: #222;
   margin: 0;
   padding: 0;
+>>>>>>> f954875410dcef6604e97fdbda5a7065ccc4c1d3
 }
 
 /* Top navigation */

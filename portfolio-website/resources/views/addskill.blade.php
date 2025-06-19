@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Add Skill</title>
+    <link rel="stylesheet" href="{{ asset('css/addskill.css') }}">
+
 </head>
 <body>
     <h2>Add Skill</h2>

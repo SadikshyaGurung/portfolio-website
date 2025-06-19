@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <title>Add Project</title>
+    <link rel="stylesheet" href="{{ asset('css/addproject.css') }}">
+
 </head>
 <body>
     <h2>Add New Project</h2>

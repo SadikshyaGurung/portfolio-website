@@ -1,0 +1,95 @@
+/* Background and font */
+body {
+    background: #ffe6f0; /* baby pink */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #b94e48; /* coral pink text */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Center the form */
+form {
+    background: #fff0f6; /* lighter baby pink */
+    padding: 25px 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: 0 4px 8px rgba(255, 127, 127, 0.3);
+}
+
+/* Form heading */
+h2 {
+    text-align: center;
+    color: #d76a6a; /* coral pink */
+    margin-bottom: 25px;
+}
+
+/* Labels styling */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* Text inputs and textarea */
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 2px solid #f5a4a4; /* coral pink border */
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    resize: vertical;
+    font-family: inherit;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #e76c71; /* deeper coral on focus */
+    outline: none;
+}
+
+/* File input styling */
+input[type="file"] {
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    background-color: #f88379; /* coral pink */
+    color: white;
+    border: none;
+    padding: 12px 0;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 700;
+}
+
+button:hover {
+    background-color: #d76a6a; /* darker coral */
+}
+
+/* Success message styling */
+.alert-success {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #dff0d8;
+    border: 1px solid #d0e9c6;
+    border-radius: 6px;
+    color: #3c763d;
+    font-weight: 600;
+    text-align: center;
+}
