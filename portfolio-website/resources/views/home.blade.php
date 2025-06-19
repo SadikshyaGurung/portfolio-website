@@ -35,18 +35,18 @@
             <div class="crafting-text">
                 <h2>{{ $settings->welcome_heading }}</h2>
                 <p>{{ $settings->welcome_text }}</p>
-                <button class="crafting-button">View Projects</button>
+                
             </div>
         </section>
 
         <!-- Featured Projects Section -->
         <section class="crafting-section">
-            <h2>Featured Projects</h2><br>
+            <h2>Featured Projects</h2>
             <div class="projects">
+                
                 @foreach($projects as $project)
                     <div class="project-card">
-                        <img src="{{ asset($project->image_url) }}" alt="{{ $project->title }}" class="project-image">
-                        <h3 class="project-title">{{ $project->title }}</h3>
+                       <h3 class="project-title">{{ $project->title }}</h3>
                         <p class="project-description">{{ $project->description }}</p>
                     </div>
                 @endforeach
@@ -54,12 +54,12 @@
         </section>
 
         <!-- About Me Section -->
+      
         <section class="crafting-section">
-            <h2>About Me</h2><br>
-            <div>
-                <p>{{ $settings->about_text }}</p>
-            </div>
-        </section>
+         <p ><h2>About me</h2>
+         {{ $settings->about_text }}</p>
+       </section>
+
     </div>
 
 </body>

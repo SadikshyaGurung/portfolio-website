@@ -9,94 +9,71 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\PersonalDetailController;
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\PersonalDetailController;
 
-    // Show registration form
+// Public Routes
+
+// Public Projects page (anyone can view)
+Route::get('/project', function () {
+    $projects = Project::with('skills')->latest()->get();
+    return view('project', compact('projects'));
+})->name('project');
+
+// Registration
 Route::get('/register', [AuthController::class, 'registerview'])->name('register.view');
-
-// Handle registration form submission
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-
-Route::get('/', [HomeController::class, 'index'])->name('home'); // Homepage
-Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit'); // Edit settings
-Route::post('/home/update', [HomeController::class, 'update'])->name('home.update'); // Update settings
-
-// Homepage
-Route::get('/home_edit', fn() => view('home_edit'));
-
-// About
-Route::get('/about', [App\Http\Controllers\AboutController::class, 'index']);
-
-// Contact Form (GET route for the form)
-Route::get('/contact', function () {
-    return view('contact'); // Returns contact.blade.php
-});
-
-// Handle contact form submission (POST route)
-Route::post('/contact', [MessageController::class, 'store'])->name('message.store');
-
-// Login/Logout
-Route::get('/login', [AuthController::class, 'loginView'])->name('login.View');
+// Login / Logout
+Route::get('/login', [AuthController::class, 'loginView'])->name('login.view');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', function () {
     Auth::logout();
     return redirect('/login');
 })->name('logout');
 
-// Resume
+// Other public routes
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home/edit', [HomeController::class, 'edit'])->name('home.edit');
+Route::post('/home/update', [HomeController::class, 'update'])->name('home.update');
+
+Route::get('/about', [App\Http\Controllers\AboutController::class, 'index']);
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::post('/contact', [MessageController::class, 'store'])->name('message.store');
 Route::get('/resume', [ResumeController::class, 'show'])->name('resume');
 
-// Projects
-Route::get('/project', function () {
-    $projects = Project::latest()->get();
-    return view('project', compact('projects'));
-})->name('project');
 
-// ---------------------------
-// Dashboard & Admin Routes (Requires Auth)
-// ---------------------------
-
+// Authenticated Routes (only logged-in users)
 Route::middleware('auth')->group(function () {
 
-    // Admin dashboard
+    // Admin dashboard & other admin routes
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
-
-    // Admin Contact Dashboard route
     Route::get('/contactdash', [AdminContactController::class, 'index'])->name('contactdash');
-
-    // Admin message management routes
     Route::get('/admin/message/{id}/edit', [AdminContactController::class, 'edit'])->name('message.edit');
     Route::put('/admin/message/{id}', [AdminContactController::class, 'update'])->name('message.update');
     Route::delete('/admin/message/{id}', [AdminContactController::class, 'destroy'])->name('message.destroy');
 
+    // Personal details
     Route::get('/personal', [PersonalDetailController::class, 'personal'])->name('personal');
+    Route::get('/personal/edit', [PersonalDetailController::class, 'edit'])->name('personal.edit');
+    Route::post('/personal/update', [PersonalDetailController::class, 'update'])->name('personal.update');
 
-// Route to show the edit form for personal details
-Route::get('/personal/edit', [PersonalDetailController::class, 'edit'])->name('personal.edit');
-
-// Route to handle the update (post form submission)
-Route::post('/personal/update', [PersonalDetailController::class, 'update'])->name('personal.update');
-
-
-    // Skill Management
+    // Skill management
     Route::get('/skilldash', [SkillController::class, 'index'])->name('skilldash.index');
     Route::get('/addskill', [SkillController::class, 'add'])->name('skill.add');
     Route::post('/addskill', [SkillController::class, 'store'])->name('skill.store');
+    Route::delete('/skilldash/{skill_id}', [SkillController::class, 'destroy'])->name('skilldash.destroy');
 
-    // In routes/web.php
-Route::get('home_edit', [HomeController::class, 'edit'])->name('home.edit');
-Route::post('home_update', [HomeController::class, 'update'])->name('home.update');
 
-    // Project Management
+
+    // Project management routes (only for authenticated users)
+    Route::get('/projectdash', [ProjectController::class, 'index'])->name('projectdash.index');
     Route::get('/projectform', [ProjectController::class, 'create'])->name('project.create');
     Route::post('/projectform', [ProjectController::class, 'store'])->name('project.store');
-    Route::get('/projectdash', [ProjectController::class, 'index'])->name('projectdash.index');
     Route::get('/projectedit/{id}', [ProjectController::class, 'edit'])->name('project.edit');
     Route::put('/projectedit/{id}', [ProjectController::class, 'update'])->name('project.update');
     Route::delete('/projectdelete/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
 });
-
-

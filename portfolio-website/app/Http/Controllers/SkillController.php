@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Requests\skillrequest;
 use Illuminate\Http\Request;
 use App\Models\Skill;
-
+use App\Models\Project;
 class SkillController extends Controller
 {
     public function resume()
@@ -18,7 +18,8 @@ class SkillController extends Controller
     
    public function index()
 {
-    $skills = Skill::all();
+    $skills = Skill::paginate(5);
+
     return view('skilldash', ['skills' => $skills]);
 }
 
@@ -41,4 +42,11 @@ public function store(Request $request)
 }
 
 
+public function destroy($id)
+{
+    $skill = Skill::findOrFail($id);
+    $skill->delete();
+
+    return redirect()->route('skilldash.index')->with('success', 'Skill deleted successfully.');
+}
 }

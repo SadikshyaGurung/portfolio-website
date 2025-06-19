@@ -21,17 +21,10 @@
     </nav>
 </div>
 <div class="main">
-  <h1>📁 My Project Portfolio</h1>
 <div class="container">
+  <h1>📁 My Project Portfolio</h1>
   @foreach ($projects as $project)
     <div class="box">
-      <div class="img-placeholder">
-        @if($project->image_url)
-          <img src="{{ asset('storage/' . $project->image_path) }}" alt="Project Image" />
- @else
-          <span>No Image</span>
-        @endif
-      </div>
       <div class="text-content">
         <div class="project-name">{{ $project->title }}</div>
         <div class="description">{{ $project->description }}</div>

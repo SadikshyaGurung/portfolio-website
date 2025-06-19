@@ -28,7 +28,7 @@ class projectrequest extends FormRequest
             'title'=> 'required|string|max:255',
             'description' => 'required|string|max:100',
             'skill' => 'required|string|max:15',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048'
+    
         ];
     }
 }

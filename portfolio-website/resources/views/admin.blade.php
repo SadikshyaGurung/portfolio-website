@@ -20,7 +20,7 @@
         <li id="projects"><a href="projectdash"> 📁 Projects</a></li>
         <li id="skills"><a href="skilldash">💻 Skills</a></li>
         <li id="contacts"><a href="contactdash">📧 Contacts</a></li>
-         <li><a href="{{ route('personal') }}">👤 Personal Details</a></li>
+         <li><a href="personal">👤 Personal Details</a></li>
 
 
       </ul>

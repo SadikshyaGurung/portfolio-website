@@ -8,76 +8,56 @@ use App\Models\Skill;
 
 class ProjectController extends Controller
 {
+    // Show all projects with their skills
+    // app/Http/Controllers/ProjectController.php
+
 public function index()
 {
-    // Eager load related skills
-    $projects = Project::with('skills')->get();
+    $projects = Project::with('skills')->latest()->paginate(5);
+
     return view('projectdash', compact('projects'));
 }
 
-
+    // Show the form to create project
     public function create()
     {
         $skills = Skill::all();
         return view('projectform', compact('skills'));
     }
 
- public function store(Request $request)
-{
-    // Validate incoming request data (optional but recommended)
-    $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'required|string',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
-
-    // Store the uploaded image in storage/app/public/images and get the path
-    $path = $request->file('image')->store('images', 'public');
-
-    // Create and save the project
-   $project = new Project();
-
-$project->project_id = $request->input('project_id'); // <-- assign this
-$project->title = $request->title;
-$project->description = $request->description;
-$project->image = $path;
-
-$project->save();
-
-    // Redirect back or to some page with success message
-    return redirect()->route('project')->with('success', 'Project created successfully!');
-}
-    public function edit($id)
+    // Store new project with skills
+    public function store(Request $request)
     {
-        $project = Project::findOrFail($id);
-        $skills = Skill::all();
-        return view('editproject', compact('project', 'skills'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $project = Project::findOrFail($id);
-
-       $request->validate([
-    'project_id' => 'required|integer|unique:projects,project_id',
+       $validated = $request->validate([
+    'project_id' => 'required|string|unique:projects,project_id',
     'title' => 'required|string|max:255',
     'description' => 'required|string',
-    'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    'skills' => 'array',
+    'skills.*' => 'exists:skills,skill_id',
 ]);
 
 
-        $project->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'skills' => implode(',', $request->skills),
-        ]);
+     
+       $project = Project::create([
+    'project_id' => $validated['project_id'],
+    'title' => $validated['title'],
+    'description' => $validated['description'],
+    
+]);
 
-        return redirect()->route('projectdash.index')->with('success', 'Project updated!');
-    }
 
-    public function destroy($id)
-    {
-        Project::destroy($id);
-        return redirect()->route('projectdash.index')->with('success', 'Project deleted!');
+        if (!empty($validated['skills'])) {
+            $project->skills()->attach($validated['skills']);
+        }
+
+        return redirect()->route('projectdash.index')->with('success', 'Project created successfully!');
     }
+    
+public function destroy($id)
+{
+    $project = Project::findOrFail($id);
+    $project->delete();
+
+    return redirect()->route('project.index')->with('success', 'Project deleted successfully.');
+}
 }

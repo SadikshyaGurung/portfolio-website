@@ -8,15 +8,15 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('projects', function (Blueprint $table) {
-            $table->id();
-            $table->string('project_id')->unique();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->string('image')->nullable();
-            $table->string('url')->nullable();
-            $table->timestamps();
-        });
+       Schema::create('projects', function (Blueprint $table) {
+    $table->id(); // this is the primary key (auto-incrementing)
+    $table->string('project_id')->nullable(); // make it nullable if you want to keep it but optional
+    $table->string('title');
+    $table->text('description');
+    $table->timestamps();
+});
+
+
     }
 
     public function down()

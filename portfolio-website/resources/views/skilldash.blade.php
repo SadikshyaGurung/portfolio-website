@@ -49,14 +49,17 @@
         <div class="grid-item">{{ $skill->title }}</div>
         <div class="grid-item">{{ $skill->description }}</div>
           <div class="grid-item">
-          <form action="{{ route('skilldash.index') }}/{{ $skill->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this skill?');">
-            @csrf
-            @method('DELETE')
-            <button type="submit">Delete</button>
-          </form>
+          <form action="{{ route('skilldash.destroy', $skill->skill_id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this skill?');">
+    @csrf
+    @method('DELETE')
+    <button type="submit">Delete</button>
+</form>
+
         </div>
       @endforeach
     </div>
+    {{ $skills->Links() }}
+
   </main>
 </body>
 

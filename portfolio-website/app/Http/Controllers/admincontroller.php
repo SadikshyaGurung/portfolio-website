@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
+    public function personal()
+{
+    // If you want to pass data, do it here
+    return view('personal'); // this should be resources/views/personal.blade.php
+}
+
     public function dashboard()
     {
         $projectCount = Project::count();

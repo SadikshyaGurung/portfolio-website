@@ -6,6 +6,8 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* Navbar */
 nav.topnav {
     display: flex;
     justify-content: space-between;
@@ -20,19 +22,16 @@ nav.topnav {
     z-index: 999;
 }
 
-/* Logo / title section */
 .topnav-left h1 {
     margin: 0;
     font-size: 24px;
     color: #ffffff;
 }
 
-/* Nav links */
 .topnav-right {
     display: flex;
     gap: 15px;
     margin-right: 50px;
-    
 }
 
 .topnav-right a {
@@ -40,7 +39,7 @@ nav.topnav {
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
-    padding: 5px 10px; /* ensures clickable space */
+    padding: 5px 10px;
     transition: background-color 0.3s ease;
 }
 
@@ -50,17 +49,14 @@ nav.topnav {
     border-radius: 6px;
 }
 
-
-
 /* Container */
 .container {
     max-width: 1100px;
-    margin: 40px auto;
-    padding: 30px;
-   
+    margin: 0 auto;
+    padding: 100px 20px 60px 20px; /* reduced top padding */
 }
 
-/* Crafting Section */
+/* Crafting Section (Shared Base) */
 .crafting-section {
     display: flex;
     align-items: center;
@@ -71,62 +67,30 @@ nav.topnav {
     background-color: #ffebeb;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+    padding: 30px;
 }
 
-.crafting-image img {
-    width: 350px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 18px;
-    display: block;
-    padding: 20px;
-}
-
-.crafting-text {
-    flex: 1;
-}
-
-.crafting-text h2 {
-    font-size: 2.2rem;
-    color: #ff787a; /* Orange accent */
-    margin-bottom: 18px;
-}
-
-.crafting-text p {
-    font-size: 1.15rem;
-    color: #444;
-    margin-bottom: 24px;
-}
-
-.crafting-button {
-    background: #ff787a;
-    color: #fff;
-    border: none;
-    padding: 12px 32px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.crafting-button:hover {
-    background: #ff787a; /* Light orange hover */
+/* First Section Specific — keep layout as is */
+.crafting-section:first-of-type {
+    align-items: center;
+    padding: 30px;
 }
 
 /* Featured Projects Section */
 .projects {
+    margin: 0 auto;
+    max-width: 900px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
-    margin-top: 24px;
+    padding: 0 10px;
 }
 
 .project-card {
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(255, 152, 0, 0.10);
-    padding: 20px;
-    background: #fffbe6; /* Light orange background for project cards */
+    padding: 24px;
+    background: #fffbe6;
     text-align: center;
     transition: transform 0.18s, box-shadow 0.18s;
 }
@@ -145,7 +109,7 @@ nav.topnav {
 }
 
 .project-card h3 {
-    color: #ff787a; /* Orange title for projects */
+    color: #ff787a;
     margin: 10px 0 8px 0;
     font-size: 1.2rem;
 }
@@ -155,54 +119,117 @@ nav.topnav {
     font-size: 1rem;
 }
 
-/* About Me Section */
-.crafting-section>h2 {
-    color: #ff787a; /* Orange for headings */
-    margin-bottom: 1rem;
+/* Image */
+.crafting-image img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 18px;
+    display: block;
+    padding: 20px;
 }
 
-.crafting-section>div p {
+/* Text */
+.crafting-text {
+    flex: 1;
+}
+
+.crafting-text h2 {
+    font-size: 2.2rem;
+    color: #ff787a;
+}
+
+.crafting-text p {
+    font-size: 1.15rem;
     color: #444;
-    line-height: 1.5;
+    margin-bottom: 24px;
 }
 
-/* Responsive Design */
-@media (max-width: 1100px) {
-    .container {
-        padding: 10px;
-    }
-
-    .crafting-section {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .crafting-image img {
-        width: 420px;
-        height: 240px;
-        object-fit: cover;
-        border-radius: 18px;
-        display: block;
-    }
-
-    .projects {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+/* Button */
+.crafting-button {
+    background: #ff787a;
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-/* Other Customizations for About Me, Sections */
+.crafting-button:hover {
+    background: #ff787a;
+}
+
+/* Headings */
+.crafting-section > h2,
 section h2 {
-    margin-bottom: 10px;
-    color: #ffb0b0;
-    border-bottom: 2px solid #ffa3a3; /* Light pink border */
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: #ff787a;
     padding-bottom: 5px;
 }
 
+/* About Me Section */
+.crafting-section:last-of-type {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px 40px;
+}
+
+.crafting-section > div p {
+    color: #444;
+    line-height: 1.7;
+}
+/* Reduce space between section title and paragraph */
+
+
+
+
+.aboutp {
+    padding: 20px 15px;
+    line-height: 1.7;
+}
+
+/* Lists */
 ul {
     padding-left: 20px;
 }
 
 ul li {
     margin-bottom: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .container {
+        padding-top: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .crafting-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 20px 15px;
+    }
+
+    .crafting-image img {
+        width: 100%;
+        height: auto;
+        max-height: 280px;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 0;
+    }
+
+    .project-card {
+        padding: 20px;
+    }
 }

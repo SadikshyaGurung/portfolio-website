@@ -43,32 +43,27 @@
       <div>Project ID</div>
       <div>Title</div>
       <div>Description</div>
-      <div>Skills</div>
       <div>Actions</div>
     </div>
 
     <div class="grid-container">
-      @foreach ($projects as $project)
-        <div class="grid-item">{{ $project->project_id }}</div>
-        <div class="grid-item">{{ $project->title }}</div>
-        <div class="grid-item">{{ $project->description }}</div>
-        <div class="grid-item">
-          @php
-            $skillIds = explode(',', $project->skills);
-            $skillTitles = \App\Models\Skill::whereIn('id', $skillIds)->pluck('title')->toArray();
-          @endphp
-          {{ implode(', ', $skillTitles) }}
-        </div>
-        <div class="grid-item">
-          <form action="{{ route('project.destroy', $project->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Delete this project?');">
-            @csrf
-            @method('DELETE')
-            <button type="submit">Delete</button>
-          </form>
-        </div>
-      @endforeach
+  @foreach ($projects as $project)
+    <div class="grid-item">{{ $project->project_id }}</div>
+    <div class="grid-item">{{ $project->title }}</div>
+    <div class="grid-item">{{ $project->description }}</div>
+    
+    <div class="grid-item">
+      <form action="{{ route('project.destroy', $project->project_id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Delete this project?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Delete</button>
+      </form>
     </div>
-
+  @endforeach
+</div>
+<div class="next">
+            {{$projects->links()}}
+</div> 
   </main>
 </body>
 

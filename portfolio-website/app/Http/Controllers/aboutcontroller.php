@@ -12,9 +12,6 @@ class AboutController extends Controller
         $personalDetail = PersonalDetail::first();  // No authentication check required
 
         // If personal details are not found, you can handle it by showing a message or redirecting
-        if (!$personalDetail) {
-            return redirect()->route('home')->with('error', 'Personal details not found.');
-        }
 
         // Return the 'about' view with the personal details
         return view('about', compact('personalDetail'));

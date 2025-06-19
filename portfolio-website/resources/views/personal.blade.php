@@ -39,16 +39,12 @@
     <button type="submit">Save</button>
 </form>
 
-
-@if ($errors->any())
-    <div class="errors">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+@if ($personalDetail)
+  <!-- Show personal details -->
+@else
+  <p>No personal details found. Please add them <a href="{{ route('personal.edit') }}">here</a>.</p>
 @endif
+
 
   </main>
 </body>

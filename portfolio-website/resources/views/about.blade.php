@@ -35,16 +35,15 @@
             </div>
         </div>
         <div>
-            <p>Hi! I’m Akschit, an enthusiastic beginner exploring the world of coding. 
-            I recently started learning web development and love how creative it can be.
-            Right now, I’m focusing on HTML, CSS, and Laravel to build real web projects.
-            Every day I discover something new, and that keeps me excited to keep going.
-            I enjoy solving problems and turning simple ideas into working websites.
-            My goal is to become a full-stack developer and work on meaningful projects.
-            I believe anyone can learn to code with patience, practice, and curiosity.
-            Besides coding, I like watching tech tutorials and experimenting with small projects.
-            I’m building my portfolio step by step and learning from every experience.
-            I’m excited to grow as a developer and connect with others on the same journey!</p>
+            <p>Hi! I’m Sadikshya Gurung, a passionate learner with a love for creativity and technology. I'm currently pursuing my B.Sc. CSIT at ASCOL, where I’m building a strong foundation in computer science and IT.
+
+Alongside my academic journey, I’m exploring the world of web development and sharpening my skills in HTML, CSS, and Laravel. I find it exciting how a few lines of code can bring an idea to life—and I enjoy every step of turning concepts into functional websites.
+
+I also have a background in graphic design, which helps me bring a visual edge to the digital experiences I create. Whether it's designing clean layouts or crafting intuitive interfaces, I love blending aesthetics with usability.
+
+Every day, I learn something new—be it solving a coding challenge, experimenting with a new design tool, or watching tech tutorials. I believe curiosity, patience, and consistent practice are the keys to growth.
+
+My goal is to become a full-stack developer who can both design and build meaningful digital products. I’m excited to grow as a developer, expand my portfolio, and connect with others on this amazing journey!</p>
         </div>
     </div> 
 </main>

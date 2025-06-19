@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model
 {
-    protected $primaryKey = 'skill_id';  // if you renamed 'id' to 'skill_id'
+    protected $primaryKey = 'skill_id';
+public $incrementing = true;
+protected $keyType = 'int';
 
     protected $fillable = [
         'title',
@@ -15,7 +17,8 @@ class Skill extends Model
 
 public function projects()
 {
-    return $this->belongsToMany(Project::class, 'project_skill');
+    return $this->belongsToMany(Project::class, 'project_skill', 'skill_id', 'project_id');
 }
+
 
 }

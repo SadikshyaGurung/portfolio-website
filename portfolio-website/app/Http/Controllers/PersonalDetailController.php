@@ -9,18 +9,17 @@ use App\Models\PersonalDetail;
 class PersonalDetailController extends Controller
 {
     // Show personal details to the user (both authenticated and non-authenticated users)
-    public function personal()
-    {
-        // Fetch the personal detail record for the logged-in user
-        $user = auth()->user();
-        $personalDetail = PersonalDetail::where('user_id', $user->id)->first();
+   public function personal()
+{
+    $user = auth()->user();
+    $personalDetail = PersonalDetail::where('user_id', $user->id)->first();
 
-        if (!$personalDetail) {
-            return redirect()->route('home')->with('error', 'Personal details not found.');
-        }
+    // Remove the redirect if not found
+    // You can handle null $personalDetail in the blade
 
-        return view('personal', compact('user', 'personalDetail'));
-    }
+    return view('personal', compact('user', 'personalDetail'));
+}
+
 
     // Show the edit form for personal details
     public function edit()

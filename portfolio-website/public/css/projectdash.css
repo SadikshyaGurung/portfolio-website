@@ -91,7 +91,7 @@ main {
 
 .grid-header {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   background-color: #fbd1d1;
   color: #333;
   padding: 14px 20px;
@@ -102,7 +102,7 @@ main {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   background-color: white;
   border: 1px solid #ddd;
   border-top: none;
@@ -121,11 +121,11 @@ main {
   border-right: none;
 }
 
-.grid-container > .grid-item:nth-child(5n) {
+.grid-container > .grid-item:nth-child(4n) {
   border-right: none;
 }
 
-.grid-container > .grid-item:nth-child(-n+5) {
+.grid-container > .grid-item:nth-child(-n+4) {
   border-top: none;
 }
 
