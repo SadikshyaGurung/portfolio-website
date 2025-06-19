@@ -11,18 +11,24 @@
         <div class="sidebar">
             <h2 class="home">Admin Panel</h2>
             <ul>
-                <li id="dashboard"><a href="{{ route('admin') }}">🏠 Dashboard</a></li>
-                <li id="home-edit"><a href="home/edit"> &#x1F4C8; Home Page Settings</a></li>
-                <li id="projects"><a href="{{ route('projectdash.index') }}">📈 Projects</a></li>
-                <li id="skills"><a href="{{ route('skilldash.index') }}">💻 Skills</a></li>
-                <li id="contacts"><a href="{{ route('contactdash') }}">📧 Contacts</a></li>
+                <li id="dashboard"><a href="{{ route('admin') }}"> 🏠 Dashboard</a></li>
+        <li id="home-edit"><a href="home/edit"> &#x1F4C8; Home Page Settings</a></li>
+        <li id="projects"><a href="projectdash"> &#x1F4C8; Projects</a></li>
+        <li id="skills"><a href="skilldash">&#x1F4BB; Skills</a></li>
+
+        <li id="contacts"><a href="contactdash">&#x1F4E7; Contacts</a></li>
+        <li><a href="{{ route('personal') }}">👤 Personal Details</a></li>
+
             </ul>
 
             <!-- Logout button at the bottom -->
-            <form action="{{ route('logout') }}" method="POST" class="logout-form">
-                @csrf
-                <button type="submit" class="logout-button">Logout</button>
-            </form>
+           <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+    @csrf
+    <button type="submit" style="background:none; border:none; padding:0; cursor:pointer; color:blue; text-decoration:underline;">
+        Logout
+    </button>
+</form>
+
         </div>
     </aside>
 

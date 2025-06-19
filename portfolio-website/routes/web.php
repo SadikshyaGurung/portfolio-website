@@ -50,7 +50,11 @@ Route::get('/login', [AuthController::class, 'loginView'])->name('login.View');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 
-Route::get('/logout', fn() => view('logout'))->name('logout');
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
+
 Route::get('/', fn() => view('welcome'));
 Route::get('/addform', fn() => view('addform'));
 // Resume (fixed - use controller method)
@@ -67,9 +71,9 @@ Route::get('/project', function () {
 // Route::get('/', function () {
 //     return view('home');
 // });
-Route::get('/resume', function () {
-    return view('resume');
-});
+// Route::get('/resume', function () {
+//     return view('resume');
+// });
 Route::get('/contactdash', function () {
     return view('contactdash');
 });

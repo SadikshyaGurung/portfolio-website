@@ -9,11 +9,14 @@
     <div class="sidebar">
       <h2 class="home">Admin Panel</h2>
       <ul>
-        <li id="dashboard"><a href="{{ route('admin') }}">🏠 Dashboard</a></li>
-        <li id="projects"><a href="projectdash">&#x1F4C8; Projects</a></li>
+        <li id="dashboard"><a href="{{ route('admin') }}"> 🏠 Dashboard</a></li>
+        <li id="home-edit"><a href="home/edit"> &#x1F4C8; Home Page Settings</a></li>
+        <li id="projects"><a href="projectdash"> &#x1F4C8; Projects</a></li>
         <li id="skills"><a href="skilldash">&#x1F4BB; Skills</a></li>
+
         <li id="contacts"><a href="contactdash">&#x1F4E7; Contacts</a></li>
-        <li id="personal-details"><a href="{{ route('personal') }}">👤 Personal Details</a></li>
+        <li><a href="{{ route('personal') }}">👤 Personal Details</a></li>
+
       </ul>
       <form action="{{ route('logout') }}" method="POST" class="logout-form">
         @csrf
